@@ -104,8 +104,14 @@
   menuToggle.addEventListener('click', () => {
     if (tornMenu.style.display === 'none' || tornMenu.style.display === '') {
       tornMenu.style.display = 'block';
+      setTimeout(() => {
+    tornMenu.style.opacity = '1';
+  }, 10);
     } else {
-      tornMenu.style.display = 'none';
+      tornMenu.style.opacity = 'none';
+      setTimeout(() => {
+    tornMenu.style.display = 'none';
+  }, 300);
     }
   });
 </script>
