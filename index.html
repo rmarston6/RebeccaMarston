@@ -94,6 +94,18 @@
       console.log('Particles.js config loaded');
     });
   </script>
+<script>
+  const menuToggle = document.getElementById('menu-toggle');
+  const tornMenu = document.getElementById('torn-paper-menu');
+
+  menuToggle.addEventListener('click', () => {
+    if (tornMenu.style.display === 'none' || tornMenu.style.display === '') {
+      tornMenu.style.display = 'block';
+    } else {
+      tornMenu.style.display = 'none';
+    }
+  });
+</script>
 
 </body>
 </html>
