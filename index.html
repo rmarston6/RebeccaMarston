@@ -43,8 +43,24 @@
       z-index: 101;
       text-align: center;
       padding-top: 20vh;
-    }
-  </style>
+   
+    #torn-paper-menu {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background-image: url('torn-corner.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: none;
+    opacity: 0;
+    z-index: 150;
+    padding: 40px 20px;
+    color: #333;
+    transition: opacity 0.3s ease;
+  }
+  </style> 
 </head>
 <body>
 
@@ -57,23 +73,7 @@
   </button>
 
   <!-- Torn Paper Menu -->
-<div id="torn-paper-menu"
-  position: fixed;
-  top: 0;
-  right: 0;
-  width: 300px;
-  height: 100vh;
-  background-image: url('torn-corner.png');
-  background-size: cover;
-  background-repeat: no-repeat;
-  display: none;
-  opacity: 0;
-  z-index: 150;
-  padding: 40px 20px;
-  color: #333;
-  transition: opacity 0.3s ease;
-">
-
+<div id="torn-paper-menu">
   <h2>Menu</h2>
   <ul style="list-style: none; padding: 0;">
     <li><a href="#about">About</a></li>
