@@ -17,7 +17,7 @@
       overflow-x: hidden;
       font-family: 'Digitany', sans-serif;
       
-    #bg-video {
+    .bg-video {
         position: fixed;
         right: 0;
         bottom: 0;
@@ -31,7 +31,7 @@
       position: relative;
       z-index: -1;
 
-      #video-background video {
+      .video-background video {
         position: absolute;
         top: 50%;
         left: 50%;
@@ -42,6 +42,13 @@
         transform: translate (-50%, -50%);
         object-fit: cover;
     }
+      .content {
+        position: relative;
+        z-index: 1;
+        color: white;
+        text-align: center;
+        padding: 5vh 2rem;
+      }
     
     h1 {
   font-size: 200px;
