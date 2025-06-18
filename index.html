@@ -112,16 +112,17 @@
     const tornMenu = document.getElementById('torn-paper-menu');
     const icon = document.getElementById('menu-icon');
     menuToggle.addEventListener('click', () => {
-      // Toggle torn paper menu
-      tornMenu.classList.toggle('show');
-      // Swap icon image
-      // Account for spaces being encoded as %20 in the src attribute
-      if (icon.src.includes('potato%203.PNG') || icon.src.includes('potato 3.PNG')) {
-        icon.src = 'Potato Awake.PNG';
-      } else {
-        icon.src = 'potato 3.PNG';
-      }
-    });
+     tornMenu.classList.toggle('show');
+    // Check for both encoded and unencoded file names
+    if (
+      icon.src.endsWith('potato%203.PNG') ||
+      icon.src.endsWith('potato 3.PNG')
+    ) {
+      icon.src = 'Potato Awake.PNG';
+    } else {
+      icon.src = 'potato 3.PNG';
+    }
+  });
   </script>
   <!-- Torn Paper Menu -->
   <div id="torn-paper-menu">
