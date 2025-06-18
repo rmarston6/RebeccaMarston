@@ -102,28 +102,7 @@
   </div>
   <!-- Particle Background -->
   <div id="particles-js"></div>
-  <!-- Menu Button -->
-  <button id="menu-toggle" style="background: none; border: none; padding: 0;">
-    <img id="menu-icon" src="potato 3.PNG" alt="Menu" style="width: 83px; height: 83px;">
-  </button>
-  <script>
-    // Menu toggle and icon swap
-    const menuToggle = document.getElementById('menu-toggle');
-    const tornMenu = document.getElementById('torn-paper-menu');
-    const icon = document.getElementById('menu-icon');
-    menuToggle.addEventListener('click', () => {
-     tornMenu.classList.toggle('show');
-      console.log(icon.src);
-    if (
-      icon.src.endsWith('potato%203.PNG') ||
-      icon.src.endsWith('potato 3.PNG')
-    ) {
-      icon.src = 'Potato Awake.PNG';
-    } else {
-      icon.src = 'potato 3.PNG';
-    }
-  });
-  </script>
+ 
   <!-- Torn Paper Menu -->
   <div id="torn-paper-menu">
     <h2>Menu</h2>
@@ -144,6 +123,28 @@
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('Particles.js config loaded');
     });
+  </script>
+   <!-- Menu Button -->
+  <button id="menu-toggle" style="background: none; border: none; padding: 0;">
+    <img id="menu-icon" src="potato 3.PNG" alt="Menu" style="width: 83px; height: 83px;">
+  </button>
+  <script>
+    // Menu toggle and icon swap
+    const menuToggle = document.getElementById('menu-toggle');
+    const tornMenu = document.getElementById('torn-paper-menu');
+    const icon = document.getElementById('menu-icon');
+    menuToggle.addEventListener('click', () => {
+     tornMenu.classList.toggle('show');
+      console.log(icon.src);
+    if (
+      icon.src.endsWith('potato%203.PNG') ||
+      icon.src.endsWith('potato 3.PNG')
+    ) {
+      icon.src = 'Potato Awake.PNG';
+    } else {
+      icon.src = 'potato 3.PNG';
+    }
+  });
   </script>
 </body>
 </html>
