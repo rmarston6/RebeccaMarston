@@ -32,6 +32,39 @@
       height: 83px;
       cursor: pointer;
     }
+    #side-menu {
+      position: fixed;
+      top: 120px; /* Adjust so it appears just below the icon */
+      right: -220px; /* Hidden off-screen */
+      width: 200px;
+      background: rgba(255,255,255,0.95);
+      box-shadow: 0 4px 16px rgba(0,0,0,0.15);
+      border-radius: 12px 0 0 12px;
+      transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+      z-index: 2000;
+      padding: 24px 18px;
+      color: #222;
+    }
+    #side-menu.show {
+      right: 20px; /* Slides into view */
+    }
+    #side-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    #side-menu li {
+      margin: 18px 0;
+    }
+    #side-menu a {
+      text-decoration: none;
+      color: #222;
+      font-size: 1.2em;
+      transition: color 0.2s;
+    }
+    #side-menu a:hover {
+      color: #6a4eae;
+    }
     .video-background {
       position: fixed;
       top: 0;
@@ -91,6 +124,15 @@
   <button id="icon-button">
     <img id="menu-icon" src="potato 3.PNG" alt="Menu">
   </button>
+  
+  <!-- Sliding Menu -->
+  <div id="side-menu">
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#currentwork">Current Work</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
 
   <!-- Main Content -->
   <div class="content">
@@ -105,18 +147,21 @@
       console.log('Particles.js config loaded');
     });
 
-    // Icon swap logic only
+    // Icon swap and menu toggle
     const iconButton = document.getElementById('icon-button');
     const icon = document.getElementById('menu-icon');
+    const sideMenu = document.getElementById('side-menu');
+
     iconButton.addEventListener('click', () => {
-      console.log(icon.src);
       if (
         icon.src.endsWith('potato%203.PNG') ||
         icon.src.endsWith('potato 3.PNG')
       ) {
         icon.src = 'potatoawake.PNG';
+        sideMenu.classList.add('show');
       } else {
         icon.src = 'potato 3.PNG';
+        sideMenu.classList.remove('show');
       }
     });
   </script>
