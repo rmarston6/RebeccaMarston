@@ -35,9 +35,9 @@
     #side-menu {
       position: fixed;
       top: 120px;
-      right: -300px; /* menu starts hidden */
-      width: 240px;  /* set to your PNG's pixel width */
-      height: 340px; /* set to your PNG's pixel height */
+      right: -300px;
+      width: 240px;
+      height: 340px;
       background: url('menupopup.PNG') no-repeat center center;
       background-size: contain;
       box-shadow: 0 8px 32px rgba(80,60,40,0.32), 0 2px 8px rgba(160,120,80,0.13);
@@ -51,17 +51,17 @@
       overflow: hidden;
       display: flex;
       flex-direction: column;
-      justify-content: center;   /* Center menu content vertically */
-      align-items: center;       /* Center menu content horizontally */
+      justify-content: center;
+      align-items: center;
     }
     #side-menu.show {
-      right: -11px; /* Only partial menu shows */
+      right: -11px;
     }
     #side-menu ul {
       list-style: none;
       margin: 0;
       padding: 0;
-      width: 80%;   /* So text doesn't touch edge */
+      width: 80%;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -79,8 +79,6 @@
       font-family: 'Digitany', serif;
       transition: color 0.2s;
       display: block;
-      /* Optional for readability:
-      background: rgba(255,255,255,0.0); border-radius: 4px; */
     }
     #side-menu a:hover {
       color: #a97e3f;
@@ -123,10 +121,36 @@
       justify-content: center;
       align-items: center;
     }
-    h1 {
+    /* Cloud animation behind name */
+    .cloud-behind-name {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -60%);
+      z-index: 1; /* behind name, above background */
+      width: 60vw; /* adjust for desired cloud width */
+      max-width: 700px;
+      min-width: 250px;
+      pointer-events: none;
+      height: auto;
+      opacity: 0.92; /* optional, tweak for effect */
+    }
+    .cloud-behind-name video {
+      width: 100%;
+      height: auto;
+      display: block;
+      pointer-events: none;
+    }
+    .content h1 {
+      position: relative;
+      z-index: 2; /* above cloud */
       font-size: 12vw;
       margin: 0 0 20px 0;
       line-height: 1;
+    }
+    .content p {
+      position: relative;
+      z-index: 2;
     }
   </style>
 </head>
@@ -157,6 +181,12 @@
 
   <!-- Main Content -->
   <div class="content">
+    <div class="cloud-behind-name">
+      <video autoplay muted loop playsinline>
+        <source src="pixelcloud.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
     <h1>Rebecca Marston</h1>
     <p>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</p>
   </div>
@@ -185,6 +215,7 @@
         sideMenu.classList.remove('show');
       }
     });
+
     // Close menu and put her to sleep if you click outside the icon or menu
     document.addEventListener('click', function(event) {
       const isClickOnMenu = sideMenu.contains(event.target);
