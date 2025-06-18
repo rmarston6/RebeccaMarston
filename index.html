@@ -33,47 +33,59 @@
       cursor: pointer;
     }
     #side-menu {
-  position: fixed;
-  top: 120px;
-  right: -300px; /* negative value: menu starts hidden */
-  width: 240px;  /* set to your PNG's pixel width */
-  min-height: 260px;
-  background: url('menupopup.PNG') no-repeat center center;
-  background-size: contain;
-  box-shadow: 0 8px 32px rgba(80,60,40,0.32), 0 2px 8px rgba(160,120,80,0.13);
-  border: none;
-  transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
-  z-index: 2000;
-  padding: 0;
-  color: #4e3c17;
-  font-family: 'Digitany', serif;
-  letter-spacing: 0.5px;
-  overflow: auto;
-}
-#side-menu.show {
-  right: -32px; /* Shows the PNG edge flush at window edge */
-}
-#side-menu ul {
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-#side-menu li {
-  margin: 22px 0;
-}
-#side-menu a {
-  text-decoration: none;
-  color: #4e3c17;
-  font-size: 1.15em;
-  font-family: 'Digitany', serif;
-  transition: color 0.2s;
-  padding: 3px 0;
-  display: inline-block;
-}
-#side-menu a:hover {
-  color: #a97e3f;
-  text-shadow: 0 0 2px #fffbe4;
-}
+      position: fixed;
+      top: 120px;
+      right: -300px; /* menu starts hidden */
+      width: 240px;  /* set to your PNG's pixel width */
+      height: 340px; /* set to your PNG's pixel height */
+      background: url('menupopup.PNG') no-repeat center center;
+      background-size: contain;
+      box-shadow: 0 8px 32px rgba(80,60,40,0.32), 0 2px 8px rgba(160,120,80,0.13);
+      border: none;
+      transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
+      z-index: 2000;
+      padding: 0;
+      color: #4e3c17;
+      font-family: 'Digitany', serif;
+      letter-spacing: 0.5px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;   /* Center menu content vertically */
+      align-items: center;       /* Center menu content horizontally */
+    }
+    #side-menu.show {
+      right: -32px; /* Only partial menu shows */
+    }
+    #side-menu ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      width: 80%;   /* So text doesn't touch edge */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    #side-menu li {
+      margin: 28px 0;
+      text-align: center;
+      width: 100%;
+    }
+    #side-menu a {
+      text-decoration: none;
+      color: #4e3c17;
+      font-size: 1.18em;
+      font-family: 'Digitany', serif;
+      transition: color 0.2s;
+      display: block;
+      /* Optional for readability:
+      background: rgba(255,255,255,0.0); border-radius: 4px; */
+    }
+    #side-menu a:hover {
+      color: #a97e3f;
+      text-shadow: 0 0 2px #fffbe4;
+    }
     .video-background {
       position: fixed;
       top: 0;
@@ -174,16 +186,15 @@
       }
     });
     // Close menu and put her to sleep if you click outside the icon or menu
-document.addEventListener('click', function(event) {
-  const isClickOnMenu = sideMenu.contains(event.target);
-  const isClickOnIcon = iconButton.contains(event.target);
+    document.addEventListener('click', function(event) {
+      const isClickOnMenu = sideMenu.contains(event.target);
+      const isClickOnIcon = iconButton.contains(event.target);
 
-  // If the menu is open and you click outside both the menu and the icon
-  if (sideMenu.classList.contains('show') && !isClickOnMenu && !isClickOnIcon) {
-    icon.src = 'potato 3.PNG';
-    sideMenu.classList.remove('show');
-  }
-});
+      if (sideMenu.classList.contains('show') && !isClickOnMenu && !isClickOnIcon) {
+        icon.src = 'potato 3.PNG';
+        sideMenu.classList.remove('show');
+      }
+    });
   </script>
 </body>
 </html>
