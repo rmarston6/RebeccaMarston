@@ -1,3 +1,5 @@
+New code
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,49 +7,42 @@
   <title>Rebecca Marston</title>
   <style>
     @font-face {
-        font-family: 'Digitany';
-        src: url('Digitany.otf') format('opentype');
-      }
-    
-    body, html {
+      font-family: 'Digitany';
+      src: url('Digitany.otf') format('opentype');
+    }
+    html, body {
       margin: 0;
       padding: 0;
       min-height: 100%;
       overflow-y: auto;
       overflow-x: hidden;
       font-family: 'Digitany', sans-serif;
-      
+      background: #000;
+    }
     .video-background {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%
-        height: 100%;
-        z-index: -1;
-        overflow: hidden;
-        pointer-events: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
     }
-
-      .video-background video {
-        width: 100%;
-        height: 100%
-        object-fit: cover;
+    .video-background video {
+      width: 100vw;
+      height: 100vh;
+      object-fit: cover;
     }
-    
-    h1 {
-  font-size: 200px;
-}
-
     #particles-js {
       position: fixed;
-      width: 100%;
-      height: 100%;
+      width: 100vw;
+      height: 100vh;
       z-index: 100;
       top: 0;
       left: 0;
       pointer-events: none;
     }
-
     .content {
       position: relative;
       z-index: 1000;
@@ -56,86 +51,85 @@
       padding-top: 20vh;
       background-color: transparent;
     }
-   
-    #torn-paper-menu {
-    position: fixed;
-    top: 0;
-    right: 0;
-    width: 300px;
-    height: 100vh;
-    background-image: url('torn-corner.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    display: none;
-    opacity: 0;
-    z-index: 150;
-    padding: 40px 20px;
-    color: #333;
-    transition: opacity 0.3s ease;
-  }
+    h1 {
+      font-size: 4vw;
+      margin: 0 0 20px 0;
     }
-  </style> 
+    #torn-paper-menu {
+      position: fixed;
+      top: 0;
+      right: 0;
+      width: 300px;
+      height: 100vh;
+      background-image: url('torn-corner.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      display: none;
+      opacity: 0;
+      z-index: 150;
+      padding: 40px 20px;
+      color: #333;
+      transition: opacity 0.3s ease;
+    }
+    #torn-paper-menu.show {
+      display: block;
+      opacity: 1;
+    }
+    #menu-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 160;
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 2rem;
+      color: white;
+    }
+  </style>
 </head>
 <body>
-
-  <!-- Video Bakground -->
+  <!-- Video Background -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
       <source src="2.mp4" type="video/mp4" />
-    <video>
-  <div>
-    
+      Your browser does not support the video tag.
+    </video>
+  </div>
   <!-- Particle Background -->
   <div id="particles-js"></div>
-
   <!-- Menu Button -->
-  <button id="menu-toggle" style="position: fixed; top: 20px; right: 20px; z-index: 160; background: none; border: none; cursor: pointer;">
-  <img src="🍔" alt="Menu" style="width: 40px;">
-  </button>
-
+  <button id="menu-toggle">☰</button>
   <!-- Torn Paper Menu -->
-<div id="torn-paper-menu">
-  <h2>Menu</h2>
-  <ul style="list-style: none; padding: 0;">
-    <li><a href="#about">About</a></li>
-    <li><a href="#books">Books</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
-</div>
-
-  
+  <div id="torn-paper-menu">
+    <h2>Menu</h2>
+    <ul style="list-style: none; padding: 0;">
+      <li><a href="#about">About</a></li>
+      <li><a href="#books">Books</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
   <!-- Main Content -->
   <div class="content">
     <h1>Rebecca Marston</h1>
     <p>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</p>
   </div>
-</div style="height: 2000px;"></div>
-
   <!-- Particle Library -->
   <script src="particles.min.js"></script>
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('Particles.js config loaded');
     });
+    // Torn menu toggle
+    const menuToggle = document.getElementById('menu-toggle');
+    const tornMenu = document.getElementById('torn-paper-menu');
+    menuToggle.addEventListener('click', () => {
+      if (!tornMenu.classList.contains('show')) {
+        tornMenu.classList.add('show');
+      } else {
+        tornMenu.classList.remove('show');
+      }
+    });
   </script>
-<script>
-  const menuToggle = document.getElementById('menu-toggle');
-  const tornMenu = document.getElementById('torn-paper-menu');
-
-  menuToggle.addEventListener('click', () => {
-    if (tornMenu.style.display === 'none' || tornMenu.style.display === '') {
-      tornMenu.style.display = 'block';
-      setTimeout(() => {
-    tornMenu.style.opacity = '1';
-  }, 10);
-    } else {
-      tornMenu.style.opacity = 'none';
-      setTimeout(() => {
-    tornMenu.style.display = 'none';
-  }, 300);
-    }
-  });
-</script>
-
 </body>
 </html>
