@@ -127,13 +127,13 @@
       left: 50%;
       top: 50%;
       transform: translate(-50%, -60%);
-      z-index: 1; /* behind name, above background */
-      width: 60vw; /* adjust for desired cloud width */
+      z-index: 1;
+      width: 60vw;
       max-width: 700px;
       min-width: 250px;
       pointer-events: none;
       height: auto;
-      opacity: 0.92; /* optional, tweak for effect */
+      opacity: 0.92;
     }
     .cloud-behind-name video {
       width: 100%;
@@ -143,7 +143,7 @@
     }
     .content h1 {
       position: relative;
-      z-index: 2; /* above cloud */
+      z-index: 2;
       font-size: 12vw;
       margin: 0 0 20px 0;
       line-height: 1;
@@ -158,7 +158,7 @@
   <!-- Video Background -->
   <div class="video-background">
     <video autoplay muted loop playsinline>
-      <source src="pixelcloudtransparent.webm" type="video/webm" />
+      <source src="4.mp4" type="video/mp4" />
       Your browser does not support the video tag.
     </video>
   </div>
@@ -183,7 +183,7 @@
   <div class="content">
     <div class="cloud-behind-name">
       <video autoplay muted loop playsinline>
-        <source src="pixelcloudtransparent.mp4" type="video/mp4" />
+        <source src="pixelcloudtransparent.webm" type="video/webm" />
         Your browser does not support the video tag.
       </video>
     </div>
@@ -216,7 +216,6 @@
       }
     });
 
-    // Close menu and put her to sleep if you click outside the icon or menu
     document.addEventListener('click', function(event) {
       const isClickOnMenu = sideMenu.contains(event.target);
       const isClickOnIcon = iconButton.contains(event.target);
