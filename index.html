@@ -164,6 +164,17 @@
         sideMenu.classList.remove('show');
       }
     });
+    // Close menu and put her to sleep if you click outside the icon or menu
+document.addEventListener('click', function(event) {
+  const isClickOnMenu = sideMenu.contains(event.target);
+  const isClickOnIcon = iconButton.contains(event.target);
+
+  // If the menu is open and you click outside both the menu and the icon
+  if (sideMenu.classList.contains('show') && !isClickOnMenu && !isClickOnIcon) {
+    icon.src = 'potato 3.PNG';
+    sideMenu.classList.remove('show');
+  }
+});
   </script>
 </body>
 </html>
