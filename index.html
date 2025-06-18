@@ -35,24 +35,24 @@
     #side-menu {
   position: fixed;
   top: 120px;
-  right: -300px; /* Hidden off-screen */
-  width: 100px;   /* Adjust to fit your image */
+  right: -240px; /* negative value: menu starts hidden */
+  width: 240px;  /* set to your PNG's pixel width */
   min-height: 260px;
   background: url('menupopup.PNG') no-repeat center center;
   background-size: cover;
   box-shadow: 0 8px 32px rgba(80,60,40,0.32), 0 2px 8px rgba(160,120,80,0.13);
   border: none;
-  border-radius: 0;
+  border-radius: 30px 0 0 30px; /* Only left side rounded */
   transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
   z-index: 2000;
-  padding: 48px 32px 36px 32px; /* Add more/less padding as needed for your image */
+  padding: 48px 32px 36px 32px;
   color: #4e3c17;
-  font-family: 'Digitany', serif;
+  font-family: 'Georgia', 'Digitany', serif;
   letter-spacing: 0.5px;
   overflow: auto;
 }
 #side-menu.show {
-  right: 20px;
+  right: 0; /* Shows the PNG edge flush at window edge */
 }
 #side-menu ul {
   list-style: none;
