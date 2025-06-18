@@ -113,7 +113,7 @@
     const icon = document.getElementById('menu-icon');
     menuToggle.addEventListener('click', () => {
      tornMenu.classList.toggle('show');
-    // Check for both encoded and unencoded file names
+      console.log(icon.src);
     if (
       icon.src.endsWith('potato%203.PNG') ||
       icon.src.endsWith('potato 3.PNG')
