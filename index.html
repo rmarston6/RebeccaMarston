@@ -104,17 +104,24 @@
   <div id="particles-js"></div>
   <!-- Menu Button -->
   <button id="menu-toggle" style="background: none; border: none; padding: 0;">
-    <img src="potato 3.PNG" alt="Menu" style="width: 83px; height: 83px;">
+    <img id="menu-icon" src="potato 3.PNG" alt="Menu" style="width: 83px; height: 83px;">
   </button>
   <script>
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-  var icon = document.getElementById('menu-icon');
-  if (icon.src.includes('potato 3.PNG')) {
-    icon.src = 'Potato Awake.PNG';
-  } else {
-    icon.src = 'potato 3.PNG';
-  }
-});
+    // Menu toggle and icon swap
+    const menuToggle = document.getElementById('menu-toggle');
+    const tornMenu = document.getElementById('torn-paper-menu');
+    const icon = document.getElementById('menu-icon');
+    menuToggle.addEventListener('click', () => {
+      // Toggle torn paper menu
+      tornMenu.classList.toggle('show');
+      // Swap icon image
+      // Account for spaces being encoded as %20 in the src attribute
+      if (icon.src.includes('potato%203.PNG') || icon.src.includes('potato 3.PNG')) {
+        icon.src = 'Potato Awake.PNG';
+      } else {
+        icon.src = 'potato 3.PNG';
+      }
+    });
   </script>
   <!-- Torn Paper Menu -->
   <div id="torn-paper-menu">
@@ -135,16 +142,6 @@
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('Particles.js config loaded');
-    });
-    // Torn menu toggle
-    const menuToggle = document.getElementById('menu-toggle');
-    const tornMenu = document.getElementById('torn-paper-menu');
-    menuToggle.addEventListener('click', () => {
-      if (!tornMenu.classList.contains('show')) {
-        tornMenu.classList.add('show');
-      } else {
-        tornMenu.classList.remove('show');
-      }
     });
   </script>
 </body>
