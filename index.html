@@ -148,9 +148,31 @@
       margin: 0 0 20px 0;
       line-height: 1;
     }
-    .content p {
-      position: relative;
+    /* Fancy scroll background for subtitle */
+    .scroll-bg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 18px auto 0 auto;
+      width: 70vw;              /* Wide left-to-right; adjust as desired */
+      max-width: 1200px;
+      min-width: 320px;
+      height: 90px;             /* Short and wide; adjust for your PNG proportions */
+      background: url('scroll.png') center center no-repeat;
+      background-size: 100% 100%;  /* Stretches image to fill box */
       z-index: 2;
+      position: relative;
+      font-size: 1.4em;
+      color: #322100;
+      text-shadow: 0 1px 8px #fffbe4, 0 0 2px #fffbe4;
+      font-family: 'Digitany', serif;
+      /* Optional: add box-shadow for more pop */
+      box-shadow: 0 2px 12px rgba(80,60,40,0.15);
+    }
+    .scroll-bg p {
+      /* Remove default margin if you use a <p> inside */
+      margin: 0;
+      background: transparent;
     }
   </style>
 </head>
@@ -188,7 +210,9 @@
       </video>
     </div>
     <h1>Rebecca Marston</h1>
-    <p>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</p>
+    <div class="scroll-bg">
+      Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.
+    </div>
   </div>
 
   <!-- Particle Library -->
