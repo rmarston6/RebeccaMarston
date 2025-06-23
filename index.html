@@ -153,12 +153,11 @@
       display: flex;
       justify-content: center;
       align-items: center;
-      text-align: center;
       margin: 18px auto 0 auto;
-      width: 90vw;              /* Wide left-to-right; adjust as desired */
+      width: 90vw;              
       max-width: 1200px;
       min-width: 320px;
-      height: 124px;             /* Short and wide; adjust for your PNG proportions */
+      height: 124px;             
       background: url('scroll.png') center center no-repeat;
       background-size: 100% 100%;  /* Stretches image to fill box */
       z-index: 2;
@@ -167,13 +166,12 @@
       color: #322100;
       text-shadow: 0 1px 8px #fffbe4, 0 0 2px #fffbe4;
       font-family: 'Digitany', serif;
-      /* Optional: add box-shadow for more pop */
       box-shadow: 0 2px 12px rgba(80,60,40,0.15);
+      text-align: center; /* Ensure all text is centered */
     }
-    .scroll-bg p {
-      /* Remove default margin if you use a <p> inside */
-      margin: 0;
-      background: transparent;
+    .scroll-bg span {
+      width: 100%;
+      display: block;
     }
   </style>
 </head>
@@ -212,7 +210,7 @@
     </div>
     <h1>Rebecca Marston</h1>
     <div class="scroll-bg">
-      Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.
+      <span>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</span>
     </div>
   </div>
 
