@@ -17,7 +17,7 @@
       overflow-x: hidden;
       overflow-y: auto;
       font-family: 'Digitany', sans-serif;
-      background: #000000; /* Fallback background for main content; swap for your image if desired */
+      background: #000000;
     }
     /* --- Fixed Menu Button and Menu --- */
     #icon-button {
@@ -111,13 +111,8 @@
       background: url('49.jpg') center center no-repeat;
       background-size: cover;
     }
-    .video-background video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-    }
     #particles-js {
-      position: absolute; /* inside .hero */
+      position: absolute;
       width: 100vw;
       height: 100vh;
       z-index: 1;
@@ -125,6 +120,7 @@
       left: 0;
       pointer-events: none;
     }
+    /* REMOVED: .cloud-behind-name and related styles */
     .hero h1 {
       position: relative;
       z-index: 3;
@@ -135,6 +131,8 @@
       color: black;
       letter-spacing: normal;
       text-align: center;
+      /* Add some text-shadow for legibility */
+      text-shadow: 0 2px 12px #fffbe4, 0 0 10px #fff;
     }
     .scroll-bg {
       padding-top: 30px;
@@ -176,12 +174,10 @@
       padding: 60px 20px 120px 20px;
       z-index: 2;
       position: relative;
-
       <div style="height: 400px;"></div>
     }
     /* Responsive tweaks */
     @media (max-width: 700px) {
-      .cloud-behind-name { width: 95vw; }
       .hero h1 { font-size: 9vw; }
       .scroll-bg { width: 98vw; min-width: unset; }
     }
@@ -202,14 +198,8 @@
   <!-- HERO SECTION -->
   <section class="hero" id="hero">
     <div class="video-background"></div>
-    
     <div id="particles-js"></div>
-    <div class="cloud-behind-name">
-      <video autoplay muted loop playsinline>
-        <source src="pixelcloudtransparent.webm" type="video/webm" />
-        Your browser does not support the video tag.
-      </video>
-    </div>
+    <!-- REMOVED: Cloud animation -->
     <h1>Rebecca Marston</h1>
     <div class="scroll-bg">
       <span>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</span>
@@ -222,7 +212,7 @@
     <p></p>
     <!-- More content here -->
   </section>
-  <!-- PARTCILE LIBRARY -->
+  <!-- PARTICLE LIBRARY -->
   <script src="particles.min.js"></script>
   <script>
     particlesJS.load('particles-js', 'particles.json', function() {
@@ -261,13 +251,12 @@
     window.addEventListener('scroll', function() {
       const hero = document.querySelector('.hero');
       let scrollY = window.scrollY;
-      let fadeStart = 0, fadeEnd = window.innerHeight * 0.7; // fade out as you scroll down hero
+      let fadeStart = 0, fadeEnd = window.innerHeight * 0.7;
       let opacity = 1;
       if (scrollY > fadeStart) {
         opacity = 1 - Math.min((scrollY - fadeStart) / (fadeEnd - fadeStart), 1);
       }
       hero.style.opacity = opacity;
-      // Optional: hide pointer events when invisible
       hero.style.pointerEvents = (opacity < 0.1) ? "none" : "auto";
     });
   </script>
