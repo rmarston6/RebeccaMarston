@@ -232,6 +232,23 @@
       width: 1000px; /* Adjust size as desired */
       z-index: 3;
     }
+
+    /* Desk Layer */
+    .desk-layer {
+      display: grid;
+      z-index: 2; /*sits behind*/
+    }
+
+    /* UI Layer */
+    .ui-layer {
+      display: grid;
+      z-index: 3; /*sits in front */
+    }
+
+    .ui-window {
+      width: 200px;
+      position: relative; /*so you can nudge them with margin */
+    }
     
     /* Responsive tweaks */
     @media (max-width: 700px) {
@@ -241,10 +258,12 @@
   </style>
 </head>
 <body>
+ 
   <!-- Fixed Menu Button and Menu -->
   <button id="icon-button">
     <img id="menu-icon" src="potato 3.PNG" alt="Menu">
   </button>
+ 
   <div id="side-menu">
     <ul>
       <li><a href="#about">About</a></li>
@@ -252,6 +271,7 @@
       <li><a href="#contact">Contact</a></li>
     </ul>
   </div>
+ 
   <!-- HERO SECTION -->
   <section class="hero" id="hero">
     <div class="video-background"></div>
@@ -262,6 +282,7 @@
       <span>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</span>
     </div>
   </section>
+ 
   <!-- MAIN CONTENT BELOW HERO -->
   <section class="main-content">
     <img src="coffee mug.PNG" alt="Coffee Mug" class="coffee-mug" />
@@ -270,6 +291,14 @@
     <img src="planner.PNG" alt="Planner" class="planner" />
     <img src="redbook.PNG" alt="Red Book" class="red-book" />
     <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
+  </div>
+    
+     <!-- Foreground UI Windows --!>
+     <div class="ui-layer">
+       <img src="ffff.PNG" class="ui-window" alt=UI Window 1" />
+    <div/>
+  </section>
+    
     
     <!-- More content here -->
   </section>
