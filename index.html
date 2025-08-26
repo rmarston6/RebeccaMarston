@@ -172,6 +172,7 @@
     }
     /* --- MAIN CONTENT BELOW HERO --- */
     .main-content {
+      display: grid;
       position: relative;
       background: url('desk.PNG');
       background-size: cover;
@@ -186,11 +187,13 @@
     }
 
     .coffee-mug {
-      display: block;
-      margin: 40px 0 0 40px; /* Adjust as needed */
-      width: 80px;              /* Adjust size as desired */
-      z-index: 3;               /* Sits above .main-content background */
+      justify-self: start;
+      align-self: start;
+      margin: 40px auto 0 auto; /* Adjust as needed */
+      width: 80px; /* Adjust size as desired */
+      z-index: 3;
     }
+    
     /* Responsive tweaks */
     @media (max-width: 700px) {
       .hero h1 { font-size: 9vw; }
