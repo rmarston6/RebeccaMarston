@@ -248,7 +248,7 @@
   z-index: 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns for 4 UI windows */
-  grid-template-rows: 200px; /* Adjust row height as needed */
+  grid-template-rows: 600px; /* Adjust row height as needed */
   gap: 40px;
   padding-top: 60px;
   pointer-events: none;
@@ -272,22 +272,24 @@
       width: 600px;
       position: relative; /*so you can nudge them with margin */
       z-index: 4;
-      grid-column: 3/4;
-      grid-row: 2/3;
+      grid-column: 4;
+      grid-row: 2;
     }
 
     .ui-current-works {
       width: 600px;
       position: relative; /*so you can nudge them with margin */
       z-index: 4;
-      grid-column: 3;
+      grid-column: 2/3;
+      grid-row: 3/4;
     }
 
     .ui-subscribe {
       width: 600px;
       position: relative; /*so you can nudge them with margin */
       z-index: 4;
-      grid-column: 1/2;
+      grid-column: 2/3;
+      grid-row: 3/4;
     }
     
     /* Responsive tweaks */
