@@ -423,5 +423,13 @@
       hero.style.pointerEvents = (opacity < 0.1) ? "none" : "auto";
     });
   </script>
+  <script>
+  // iOS safe viewport height
+  function setVH(){
+    document.documentElement.style.setProperty('--vh', (window.innerHeight * 0.01) + 'px');
+  }
+  window.addEventListener('resize', setVH);
+  setVH();
+</script>
 </body>
 </html>
