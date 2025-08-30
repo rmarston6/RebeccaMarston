@@ -193,6 +193,8 @@
       background: none;
       padding-bottom: 0px;
       width: 100%;
+      max-width: 100%;
+      height: auto;
       margin-top: 0;
       padding-top: 0;
       grid-template-columns: repeat(5, 1fr);
@@ -206,6 +208,8 @@
       align-self: start;
       margin: 20px 0 0 0px; /* Adjust as needed */
       width: 820px; /* Adjust size as desired */
+      max-width: 100%; 
+      height: auto;
       grid-column: 1/2;
       grid-row:5/6;
       transform: translate(-60px, 520px);
@@ -217,6 +221,8 @@
       align-self: start;
       margin: 40px 0px 0 0px; /* Adjust as needed */
       width: 1000px; /* Adjust size as desired */
+      max-width: 100%; 
+      height: auto;
       grid-column: 4/5;
       grid-row: 1/2;
       z-index: 3;
@@ -229,6 +235,8 @@
       grid-column: 4/5;
       grid-row: 3/4;
       width: 1000px; /* Adjust size as desired */
+      max-width: 100%; 
+      height: auto;
       z-index: 3;
     }
 
@@ -236,6 +244,8 @@
       justify-self: start;
       align-self: start;
       margin: 40px 0px 0 0px; /* Adjust as needed */
+      max-width: 100%; 
+      height: auto;
       width: 1000px; /* Adjust size as desired */
       grid-column: 2/3;
       grid-row: 2/3;
@@ -247,6 +257,8 @@
       align-self: start;
       margin: 40px 0px 0 0px; /* Adjust as needed */
       width: 1000px; /* Adjust size as desired */
+      max-width: 100%; 
+      height: auto;
       grid-column: 1/2;
       grid-row: 2/3;
       z-index: 3;
@@ -256,6 +268,8 @@
       justify-self: start;
       align-self: start;
       width: 1000px; /* Adjust size as desired */
+      max-width: 100%; 
+      height: auto;
       grid-column: 1/2;
       grid-row: 1/2;
       transform: translate(-40px, -20px);
@@ -270,9 +284,7 @@
 
     .ui-layer {
   position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
+  inset: 0;
   z-index: 4;
   display: grid;
   grid-template-columns: repeat(4, 1fr); /* 4 columns for 4 UI windows */
@@ -280,14 +292,17 @@
   gap: 40px;
   padding-top: 60px;
   pointer-events: none;
+  transform: translateY(calc(var(--scrollY) * var(--parallax-speed)));
+  will-change: transform;
 }
 
 .ui-layer img,
 .ui-layer a {
   pointer-events: auto;
-  width: 1000px;
+  width: clamp(360px, 36vw, 1000px);
   justify-self: left;
   align-self: start;
+  backface-visibility: hidden;
 }
    .ui-author {
       width: 700px;
@@ -324,7 +339,32 @@
       grid-row:3/4;
       transform: translate(200px, 200px);
     }
-    
+
+    :root {
+  --base-w: 1920;
+  --base-h: 1080;
+  --scale: 1;
+  --scrollY: 0;            /* will update live with JS */
+  --parallax-speed: 0.35;  /* tweak: smaller = slower UI drift */
+}
+
+.stage-wrap{
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: auto;            /* page still scrolls */
+  display: grid;
+  place-items: center;
+  background: #000;          /* matches your body bg */
+}
+.stage{
+  width: calc(var(--base-w) * 1px);
+  /* height: auto;  content sets height */
+  transform-origin: top center;
+  transform: scale(var(--scale));
+  will-change: transform;
+}
+
     /* Responsive tweaks */
     @media (max-width: 700px) {
       .hero h1 { font-size: 9vw; }
@@ -359,27 +399,31 @@
   </section>
  
   <!-- MAIN CONTENT BELOW HERO -->
-<section class="main-content">
-  <img src="coffee mug.PNG" alt="Coffee Mug" class="coffee-mug" />
-  <img src="fiddleleaffig.PNG" alt="Fiddle Leaf Fig" class="fiddle-leaf-fig-plant" />
-  <img src="jadeplant.PNG" alt="Jade Plant" class="jade-plant" />
-  <img src="planner.PNG" alt="Planner" class="planner" />
-  <img src="redbook.PNG" alt="Red Book" class="red-book" />
-  <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
-
-  <!-- Foreground UI windows stay here if you want them on top of desk items, or move outside for layering -->
-  <div class="ui-layer">
-    <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
-    <a href="https://www.etsy[dot]com/shop/Elevatai" target="_blank" class="ui-etsy">
-      <img src="EtsyLink.png" alt="Etsy UI" />
-    </a>
-    <img src="CurrentWorksUI.png" class="ui-current-works" alt="Current Works UI" />
-    <a href="https://rebeccamarston.kit[dot]com/193ca21bb0" target="_blank" class="ui-subscribe">
-      <img src="SubscribeUI.png" alt="Subscribe UI" />
-    </a>
+<div class="stage-wrap">
+  <div class="stage">
+      <!-- Your desk portion of the site -->
+    <section class="main-content">
+        <img src="coffee mug.PNG" alt="Coffee Mug" class="coffee-mug" />
+        <img src="fiddleleaffig.PNG" alt="Fiddle Leaf Fig" class="fiddle-leaf-fig-plant" />
+        <img src="jadeplant.PNG" alt="Jade Plant" class="jade-plant" />
+        <img src="planner.PNG" alt="Planner" class="planner" />
+        <img src="redbook.PNG" alt="Red Book" class="red-book" />
+        <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
+        <!-- Foreground UI windows stay here if you want them on top of desk items, or move outside for layering -->
+       <div class="ui-layer">
+        <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
+        <a href="https://www.etsy[dot]com/shop/Elevatai" target="_blank" class="ui-etsy">
+           <img src="EtsyLink.png" alt="Etsy UI" />
+        </a>
+           <img src="CurrentWorksUI.png" class="ui-current-works" alt="Current Works UI" />
+        <a href="https://rebeccamarston.kit[dot]com/193ca21bb0" target="_blank" class="ui-subscribe">
+           <img src="SubscribeUI.png" alt="Subscribe UI" />
+        </a>
+       </div>
+    </section>
+    </div>
   </div>
-</section>
-
+  
   <!-- PARTICLE LIBRARY -->
   <script src="particles.min.js"></script>
   <script>
@@ -428,5 +472,35 @@
       hero.style.pointerEvents = (opacity < 0.1) ? "none" : "auto";
     });
   </script>
+  
+  <script>
+  function fitStage(){
+    const vw = window.innerWidth, vh = window.innerHeight;
+    const baseW = 1920, baseH = 1080;       // match your :root --base-w/h
+    const scale = Math.min(vw/baseW, vh/baseH);
+    document.documentElement.style.setProperty('--scale', scale);
+    }
+    window.addEventListener('resize', fitStage);
+    fitStage();
+  </script>
+
+  <script>
+   const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+   const stageWrap = document.querySelector('.stage-wrap');
+
+   function setParallaxVar(){
+    if (prefersReduced) return;
+    const y = (window.scrollY || 0) + (stageWrap ? stageWrap.scrollTop : 0);
+    document.documentElement.style.setProperty('--scrollY', String(y));
+   }
+
+    window.addEventListener('scroll', setParallaxVar, { passive: true });
+    if (stageWrap) stageWrap.addEventListener('scroll', setParallaxVar, { passive: true });
+
+    setParallaxVar();
+</script>
+
+
+
 </body>
 </html>
