@@ -202,24 +202,24 @@
       z-index: 2;
     }
     
-   .dappled-light{
+  /* .dappled-light{
   position:absolute;
   inset:-15vh -15vw;
   pointer-events:none;
   z-index:4;                 /* between desk (3) and UI (5) */
-  mix-blend-mode: multiply;/* brighter than multiply; try overlay for punchier */
-  overflow:hidden;
+  /* mix-blend-mode: multiply;/* brighter than multiply; try overlay for punchier */
+  /*overflow:hidden;
 }
 
 /* two huge layers of soft blobs that drift */
-.dappled-light::before,
+/*.dappled-light::before,
 .dappled-light::after{
   content:"";
   position:absolute;
   inset:-12% -12%;
 
   /* BIG blobs (viewport-scaled), placed around the section */
-  background:
+ /* background:
     radial-gradient(60% 60% at 18% 18%, rgba(255,255,255,.90) 0 30%, rgba(0,0,0,.22) 52%, transparent 60%),
     radial-gradient(60% 60% at 72% 22%, rgba(255,255,255,.90) 0 28%, rgba(0,0,0,.20) 50%, transparent 58%),
     radial-gradient(60% 60% at 30% 68%, rgba(255,255,255,.90) 0 30%, rgba(0,0,0,.22) 52%, transparent 60%),
@@ -228,7 +228,7 @@
   background-repeat: no-repeat;
 
   /* size of each blob image */
-  background-size:
+/*  background-size:
     500vmax 60vmax,
     56vmax 1100vmax,
     400vmax 58vmax,
@@ -236,14 +236,14 @@
     2000vmax 2000vmax;
 
   /* <<< THIS spreads the layers so they aren’t all at 0 0 */
-  background-position:
+ /* background-position:
     10% 12%,   /* top-left */
     82% 14%,   /* top-right */
     24% 74%,   /* bottom-left */
     86% 76%,   /* bottom-right */
     50% 52%;   /* center */
 
-  filter: blur(22px);
+ /* filter: blur(22px);
   opacity: .95;
 }
 
@@ -254,7 +254,7 @@
 @keyframes panB { to { transform: translate3d(-2%,  2%, 0); } }
 
 /* keep the section height matched to your visual bottom */
-.main-content{ padding-bottom: 1150px; } /* adjust 1000–1300px to taste */
+/*.main-content{ padding-bottom: 1150px; } /* adjust 1000–1300px to taste */ 
 
 
 
@@ -424,7 +424,7 @@
       <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
 
     <!-- Dappled light overlay (insert this inside .main-content, before .ui-layer) -->
-    <div class="dappled-light"></div>
+    <!--<div class="dappled-light"></div>
     
        <!-- Foreground UI Windows -->
     <div class="ui-layer">
