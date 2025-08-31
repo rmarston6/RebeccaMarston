@@ -196,7 +196,7 @@
       margin-top: 0;
       padding-top: 0;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(8, 600px);
+      grid-template-rows: repeat(5, 320px);
       gap: 40px;
       isolation: isolate;
       z-index: 2;
@@ -211,17 +211,19 @@
   z-index: 4;           /* under .ui-layer (5), above desk/objects (3) */
 }
 
-      .shapes {
-        /* Each shape casts a translucent shadow with a blurry white glow */
-        color: transparent;                       /* no visible text color */
-        background-color: rgba(0, 0, 0, 0.25);     /* semi-transparent dark shape (shadow) */
-        text-shadow: 0 0 48px #fff;               /* fuzzy white halo (light) */
-        font: bolder 320pt/320pt monospace;       /* large font size for big shapes */
-        mix-blend-mode: multiply;                 /* blend with backdrop for realism */
-        margin: 0;
-        position: absolute;
-        /* no default margins */
-      }
+      .shapes{
+  color: transparent;
+  background-color: rgba(0,0,0,0.22);   /* soft shadow */
+  text-shadow: 0 0 90px #fff;           /* big glow halo */
+  font-weight: 800;
+  font-family: monospace;
+  font-size: clamp(280px, 32vw, 820px); /* <<< was 320pt */
+  line-height: 1;
+  mix-blend-mode: multiply;
+  margin: 0;
+  position: absolute;
+  will-change: transform;
+}
         /* Scatter positions (tweak freely) */
 .dappled-light .shapes:nth-of-type(1) { transform: translate(5vw,  5vh) rotate(-6deg);  opacity: .9; }
 .dappled-light .shapes:nth-of-type(2) { transform: translate(55vw, 8vh) rotate(8deg);  opacity: .8; }
@@ -252,9 +254,6 @@
            }
              /* (The 3rd shape is left static for a bit of irregularity, but you can animate it too) */
     @keyframes driftX { from { text-indent: -30px; } to { text-indent: 30px; } }
-@keyframes driftY { 
-  0%   { transform: translateY(-6px) }
-  100% { transform: translateY(6px) }
 }
 @keyframes sway { 
   0%   { transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(1); }
