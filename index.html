@@ -213,29 +213,21 @@
 
       .shapes{
   color: transparent;
-  background-color: rgba(0,0,0,0.22);   /* soft shadow */
-  text-shadow: 0 0 90px #fff;           /* big glow halo */
+  background-color: rgba(0,0,0,0.22);
+  text-shadow: 0 0 120px #fff;              /* wider glow */
   font-weight: 800;
   font-family: monospace;
-  font-size: clamp(280px, 32vw, 10000px); /* <<< was 320pt */
+  /* BIG: the middle value is the driver */
+  font-size: clamp(520px, 68vw, 3000px);
+  /* alt if you want even wider coverage: font-size: min(90vw, 180vh, 2200px); */
   line-height: 1;
   mix-blend-mode: multiply;
   margin: 0;
   position: absolute;
   will-change: transform;
 }
-        /* Scatter positions (tweak freely) */
-.dappled-light .shapes:nth-of-type(1) { transform: translate(5vw,  5vh) rotate(-6deg);  opacity: .9; }
-.dappled-light .shapes:nth-of-type(2) { transform: translate(55vw, 8vh) rotate(8deg);  opacity: .8; }
-.dappled-light .shapes:nth-of-type(3) { transform: translate(15vw, 32vh) rotate(3deg); opacity: .85; }
-.dappled-light .shapes:nth-of-type(4) { transform: translate(70vw, 30vh) rotate(-12deg);opacity: .75; }
-.dappled-light .shapes:nth-of-type(5) { transform: translate(35vw, 50vh) rotate(4deg); opacity: .9; }
-.dappled-light .shapes:nth-of-type(6) { transform: translate(2vw,  60vh) rotate(-8deg); opacity: .7; }
-.dappled-light .shapes:nth-of-type(7) { transform: translate(60vw, 62vh) rotate(6deg); opacity: .8; }
-.dappled-light .shapes:nth-of-type(8) { transform: translate(25vw, 78vh) rotate(-4deg); opacity: .75; }
-.dappled-light .shapes:nth-of-type(9) { transform: translate(75vw, 78vh) rotate(10deg); opacity: .8; }
-.dappled-light .shapes:nth-of-type(10){ transform: translate(40vw, 90vh) rotate(-2deg); opacity: .85; }
-             /* Define keyframe animations for subtle horizontal movement */
+
+    /* Define keyframe animations for subtle horizontal movement */
              @keyframes move {
              from { text-indent: -20px; }
              to   { text-indent: 20px; }
@@ -252,35 +244,31 @@
              .dappled-light .shapes:nth-of-type(2) {
              animation: move-1 4s ease-in-out infinite alternate;
            }
-             /* (The 3rd shape is left static for a bit of irregularity, but you can animate it too) */
-    @keyframes driftX { from { text-indent: -30px; } to { text-indent: 30px; } }
-}
-@keyframes sway { 
-  0%   { transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(1); }
-  100% { transform: translate(calc(var(--tx) + 8px), calc(var(--ty) - 8px)) rotate(calc(var(--r) + 1.5deg)) scale(1.02); }
+       /* Fix syntax: remove the extra '}' you had after driftX */
+@keyframes driftX { from { text-indent: -30px; } to { text-indent: 30px; } }
+@keyframes sway{
+  0% {   transform: translate(var(--tx), var(--ty)) rotate(var(--r)) scale(1); }
+  100% { transform: translate(calc(var(--tx) + 8px), calc(var(--ty) - 8px))
+                    rotate(calc(var(--r) + 1.5deg)) scale(1.02); }
 }
 
-/* Use per-shape CSS variables so their original translate/rotate remain */
-.dappled-light .shapes { 
+.dappled-light .shapes{
   --tx: 0px; --ty: 0px; --r: 0deg;
   animation: driftX 3.2s ease-in-out infinite alternate;
 }
 
-/* Bind each element’s starting transform to variables so sway anim can offset it */
-.dappled-light .shapes { will-change: transform; }
-.dappled-light .shapes:nth-of-type(1) { --tx: 5vw;  --ty: 5vh;  --r: -6deg;  animation: driftX 2.6s ease-in-out infinite alternate, sway 6.5s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(2) { --tx: 55vw; --ty: 8vh;  --r: 8deg;   animation: driftX 3.8s ease-in-out infinite alternate,  sway 7.5s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(3) { --tx: 15vw; --ty: 32vh; --r: 3deg;   animation: driftX 3.2s ease-in-out infinite alternate,  sway 8.2s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(4) { --tx: 70vw; --ty: 30vh; --r:-12deg;  animation: driftX 4.1s ease-in-out infinite alternate,  sway 7.8s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(5) { --tx: 35vw; --ty: 50vh; --r: 4deg;   animation: driftX 2.9s ease-in-out infinite alternate,  sway 6.9s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(6) { --tx: 2vw;  --ty: 60vh; --r: -8deg;  animation: driftX 3.6s ease-in-out infinite alternate,  sway 8.6s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(7) { --tx: 60vw; --ty: 62vh; --r: 6deg;   animation: driftX 3.3s ease-in-out infinite alternate,  sway 6.7s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(8) { --tx: 25vw; --ty: 78vh; --r: -4deg;  animation: driftX 4.0s ease-in-out infinite alternate,  sway 8.9s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(9) { --tx: 75vw; --ty: 78vh; --r: 10deg;  animation: driftX 3.1s ease-in-out infinite alternate,  sway 7.2s ease-in-out infinite alternate; }
-.dappled-light .shapes:nth-of-type(10){ --tx: 40vw; --ty: 90vh; --r: -2deg;  animation: driftX 3.7s ease-in-out infinite alternate,  sway 9.1s ease-in-out infinite alternate; }
+/* Place them around the canvas */
+.dappled-light .shapes:nth-of-type(1){  --tx: 5vw;  --ty: 5vh;  --r:-6deg;  animation: driftX 2.6s ease-in-out infinite alternate, sway 6.5s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(2){  --tx:55vw;  --ty: 8vh;  --r: 8deg;  animation: driftX 3.8s ease-in-out infinite alternate, sway 7.5s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(3){  --tx:15vw;  --ty:32vh;  --r: 3deg;  animation: driftX 3.2s ease-in-out infinite alternate, sway 8.2s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(4){  --tx:70vw;  --ty:30vh;  --r:-12deg; animation: driftX 4.1s ease-in-out infinite alternate, sway 7.8s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(5){  --tx:35vw;  --ty:50vh;  --r: 4deg;  animation: driftX 2.9s ease-in-out infinite alternate, sway 6.9s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(6){  --tx: 2vw;  --ty:60vh;  --r:-8deg;  animation: driftX 3.6s ease-in-out infinite alternate, sway 8.6s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(7){  --tx:60vw;  --ty:62vh;  --r: 6deg;  animation: driftX 3.3s ease-in-out infinite alternate, sway 6.7s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(8){  --tx:25vw;  --ty:78vh;  --r:-4deg;  animation: driftX 4.0s ease-in-out infinite alternate, sway 8.9s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(9){  --tx:75vw;  --ty:78vh;  --r:10deg;  animation: driftX 3.1s ease-in-out infinite alternate, sway 7.2s ease-in-out infinite alternate; }
+.dappled-light .shapes:nth-of-type(10){ --tx:40vw;  --ty:90vh;  --r:-2deg;  animation: driftX 3.7s ease-in-out infinite alternate, sway 9.1s ease-in-out infinite alternate; }
 
-
-    .coffee-mug {
       justify-self: start;
       align-self: start;
       width: 820px; /* Adjust size as desired */
