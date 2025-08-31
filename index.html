@@ -199,7 +199,53 @@
       grid-template-rows: repeat(5, 320px);
       gap: 40px;
       z-index: 2;
-    }
+    
+    /* Dappled light overlay covers the main-content area */
+      .dappled-light {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; 
+      height: 100%;
+      overflow: hidden;            /* hide overflow of moving shapes */
+      pointer-events: none;        /* allow clicks through to UI */
+      z-index: 3;                  /* behind UI (z-index 4), above background/objects */
+      display: grid;
+      align-items: center;
+      justify-items: center;
+      }
+      
+      .dappled-light > * {
+        grid-area: 1 / 1;  /* stack all shape <p> elements in the same grid cell */
+      }
+
+      .shapes {
+        /* Each shape casts a translucent shadow with a blurry white glow */
+        color: transparent;                       /* no visible text color */
+        background-color: rgba(0, 0, 0, 0.3);     /* semi-transparent dark shape (shadow) */
+        text-shadow: 0 0 40px #fff;               /* fuzzy white halo (light) */
+        font: bolder 320pt/320pt monospace;       /* large font size for big shapes */
+        mix-blend-mode: multiply;                 /* blend with backdrop for realism */
+        margin: 0;                                /* no default margins */
+      }
+
+             /* Define keyframe animations for subtle horizontal movement */
+             @keyframes move {
+             from { text-indent: -20px; }
+             to   { text-indent: 20px; }
+           }
+             @keyframes move-1 {
+             from { text-indent: -60px; }
+             to   { text-indent: 40px; }
+           }
+
+             /* Apply animations to the overlay shapes (run indefinitely, no hover needed) */
+             .dappled-light .shapes:nth-of-type(1) {
+             animation: move 2s ease-in-out infinite alternate;
+           }
+             .dappled-light .shapes:nth-of-type(2) {
+             animation: move-1 4s ease-in-out infinite alternate;
+           }
+             /* (The 3rd shape is left static for a bit of irregularity, but you can animate it too) */
 
     .coffee-mug {
       justify-self: start;
@@ -365,7 +411,13 @@
       <img src="planner.PNG" alt="Planner" class="planner" />
       <img src="redbook.PNG" alt="Red Book" class="red-book" />
       <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
-  
+
+    <!-- Dappled light overlay (insert this inside .main-content, before .ui-layer) -->
+    <div class="dappled-light">
+      <p class="shapes">o</p>
+      <p class="shapes">o</p>
+      <p class="shapes">\</p>
+</div>
        <!-- Foreground UI Windows -->
     <div class="ui-layer">
      <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
