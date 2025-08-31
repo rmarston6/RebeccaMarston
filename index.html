@@ -202,39 +202,42 @@
       z-index: 2;
     }
     
-    /* Overlay stays between desk objects (z:3) and UI windows (z:5) */
-.dappled-light{
-  position: absolute;
-  inset: -15vh -15vw;     /* bleed past edges */
-  pointer-events: none;
-  z-index: 4;
-  mix-blend-mode: multiply;  /* try soft-light for sunnier vibe */
-  overflow: hidden;
+   .dappled-light{
+  position:absolute;
+  inset:-15vh -15vw;         /* bleed past edges */
+  pointer-events:none;
+  z-index:4;                 /* between desk (3) and UI (5) */
+  mix-blend-mode: soft-light;/* brighter than multiply; try overlay for punchier */
+  overflow:hidden;
 }
 
-/* Two layers of big, soft blobs that gently drift */
+/* two huge layers of soft blobs that drift */
 .dappled-light::before,
 .dappled-light::after{
   content:"";
   position:absolute;
-  inset:-10% -10%;
+  inset:-12% -12%;
   background:
-    radial-gradient(50% 50% at 18% 18%, rgba(255,255,255,.9) 0 30%, rgba(0,0,0,.25) 55%, transparent 60%),
-    radial-gradient(50% 50% at 72% 22%, rgba(255,255,255,.85) 0 28%, rgba(0,0,0,.2)  52%, transparent 58%),
-    radial-gradient(50% 50% at 30% 68%, rgba(255,255,255,.9) 0 30%, rgba(0,0,0,.25) 55%, transparent 60%),
-    radial-gradient(50% 50% at 82% 74%, rgba(255,255,255,.8)  0 26%, rgba(0,0,0,.2)  50%, transparent 56%),
-    radial-gradient(50% 50% at 50% 50%, rgba(255,255,255,.85) 0 24%, rgba(0,0,0,.2)  48%, transparent 54%);
-  background-size: 35vmax 35vmax, 30vmax 30vmax, 32vmax 32vmax, 28vmax 28vmax, 26vmax 26vmax;
+    radial-gradient(60% 60% at 18% 18%, rgba(255,255,255,.85) 0 30%, rgba(0,0,0,.20) 52%, transparent 60%),
+    radial-gradient(60% 60% at 72% 22%, rgba(255,255,255,.85) 0 28%, rgba(0,0,0,.18) 50%, transparent 58%),
+    radial-gradient(60% 60% at 30% 68%, rgba(255,255,255,.85) 0 30%, rgba(0,0,0,.20) 52%, transparent 60%),
+    radial-gradient(60% 60% at 82% 74%, rgba(255,255,255,.80) 0 26%, rgba(0,0,0,.16) 48%, transparent 56%),
+    radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.85) 0 24%, rgba(0,0,0,.18) 46%, transparent 54%);
+  background-size: 60vmax 60vmax, 56vmax 56vmax, 58vmax 58vmax, 52vmax 52vmax, 50vmax 50vmax;
   background-repeat: no-repeat;
-  filter: blur(22px);
-  opacity:.9;
+  filter: blur(24px);
+  opacity:.95;
 }
 
 .dappled-light::before{ animation: panA 18s ease-in-out infinite alternate; }
 .dappled-light::after { animation: panB 22s ease-in-out infinite alternate; opacity:.6; }
 
-@keyframes panA { to { transform: translate3d(2%, -3%, 0); } }
+@keyframes panA { to { transform: translate3d( 2%, -3%, 0); } }
 @keyframes panB { to { transform: translate3d(-2%,  2%, 0); } }
+
+/* keep the section height matched to your visual bottom */
+.main-content{ padding-bottom: 1150px; } /* adjust 1000–1300px to taste */
+
 
 
      .coffee-mug {
