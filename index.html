@@ -16,31 +16,19 @@
       --stage-h: 1080;
       --scale: 1;
     }
-    
-    html {
+     /* -------- Base -------- */
+    html, body {
       margin: 0;
       padding: 0;
-      min-height: 100%;
       height: 100%;
       overflow-x: hidden;
-      overflow-y: auto;
       font-family: 'Digitany', sans-serif;
-      background: black;
+      background: #000;
     }
-
     body {
-      margin: 0;
-      padding:0;
-      min-height: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: 'Digitany', sans-serif;
-      background: url('desk.PNG');
-      background-size: 100% auto; 
-      background-position: top center;
-      background-repeat: repeat-y;
-      background-color: #000;
+      /* Desk background that scrolls with the page */
+      background: url('desk.PNG') top center repeat-y;
+      background-size: 100% auto;
     }
     
     /* --- Fixed Menu Button and Menu --- */
