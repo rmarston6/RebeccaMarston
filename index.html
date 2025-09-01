@@ -189,15 +189,14 @@
       position: relative; /* allow absolute children */
       background: none;
       width: 100vw;
+      /* FIX: Make planner cell bigger */
+      grid-template-columns: 1fr 1fr 2fr 1fr;
+      grid-template-rows: repeat(4, 1fr);
       gap: 2vw;
       isolation: isolate;
       z-index: 2;
       padding-bottom: 70px;
       padding-top: 6vw;
-      min-height: 650px;
-      max-height: 760px;
-      grid-template-columns: repeat(4, 2fr);
-      grid-template-rows: repeat(4, 2fr);
     }
     .main-content img {
       width: 80%;
@@ -214,7 +213,8 @@
     .coffee-mug      {  grid-column: 1; grid-row: 4; width: 60%; max-width: 140px; }
     .fiddle-leaf-fig-plant {  grid-column: 4; grid-row: 2; width: 85%; max-width: 180px; }
     .jade-plant      {  grid-column: 1; grid-row: 2; width: 70%; max-width: 120px; }
-    .planner         {  grid-column: 3; grid-row: 3; width: 150% !important; max-width: 900px !important; transform: translate(-50%, 20%) rotate(15deg); }
+    /* FIX: Planner wider */
+    .planner         {  grid-column: 3; grid-row: 3; width: 100%; max-width: 900px; transform: translate(-50%, 20%) rotate(15deg); }
     .red-book        {  grid-column: 4; grid-row: 3; width: 50%; max-width: 100px; }
     .wisteriabonsai  {  grid-column: 1; grid-row: 1; width: 60%; max-width: 140px; }
 
@@ -226,8 +226,8 @@
       height: 100%;
       z-index: 10;
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
       pointer-events: none; /* disables events for the overlay itself */
     }
     /* UI windows are grid items in overlay */
@@ -272,16 +272,17 @@
       .main-content {
         width: 100%;
         max-width: 100vw;
-        overflow-x: hidden;
         box-sizing: border-box;
-        min-height: 490px;
-        max-height: 540px;
-        padding-top: 6vw;
-        padding-bottom: 4.5vh;
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
         gap: 1vw;
         isolation: isolate;
+        /* FIX: Remove min/max heights and overflow-y to prevent separate scroll */
+        min-height: unset;
+        max-height: unset;
+        padding-top: 6vw;
+        padding-bottom: 50px;
+        overflow: visible !important;
       }
       .main-content img {
         width: 90%;
@@ -303,7 +304,7 @@
       .coffee-mug         { width: 70%; max-width: 120px; }
       .fiddle-leaf-fig-plant { width: 80%; max-width: 130px; }
       .jade-plant         { width: 75%; max-width: 110px; transform: translate(50%, 0%); }
-      .planner            { width: 100%; max-width: 350px; transform: translate(60%, -30%) rotate(15deg);}
+      .planner            { width: 100%; max-width: 400px; transform: translate(80%, -30%) rotate(15deg);}
       .red-book           { width: 65%; max-width: 90px; }
       .wisteriabonsai     { width: 75%; max-width: 120px; }
       /* UI Windows Mobile Placement */
