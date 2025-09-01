@@ -31,13 +31,14 @@
     /* Aspect ratio wrapper for main content */
     .aspect-ratio-box {
       position: relative;
-      width: 96vw;
-      height: 96vh;
+      width: 100vw;
+      height: 100vh;
       max-width: 100vw;
       max-height: 100vh;
-      background: transparent;
+      margin: 0;
+      padding: 0;
       overflow: hidden;
-      box-shadow: 0 0 40px rgba(0,0,0,0.08);
+      box-shadow: none;
       display: flex;
       flex-direction: column;
       justify-content: flex-start;
@@ -45,18 +46,20 @@
     }
     @media (max-aspect-ratio: 16/9) {
       .aspect-ratio-box {
-        width: calc(96vh * 1.7778);
-        height: 96vh;
+        width: 100vw;
+        height: 100vh;
       }
     }
 
-    /* HERO SECTION: fixes applied */
+    /* HERO SECTION: edge-to-edge fix */
     .hero {
       position: relative;
-      width: 100%;
-      flex: 0 0 60%; /* 60% of parent box height */
-      min-height: 250px;
-      max-height: 80vh;
+      width: 100vw;
+      height: 60vh; /* 60% of viewport height; adjust as needed */
+      margin: 0;
+      padding: 0;
+      min-height: 200px;
+      max-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -65,22 +68,22 @@
       z-index: 4;
       transition: opacity 0.3s;
       pointer-events: auto;
-      margin: 0;
-      padding: 0;
     }
     .video-background {
       position: absolute;
       top: 0; left: 0;
-      width: 100%; 
+      width: 100vw;
       height: 100%;
       z-index: 0;
       pointer-events: none;
       background: url('49.jpg') center center no-repeat;
       background-size: cover;
+      margin: 0;
+      padding: 0;
     }
     #particles-js {
       position: absolute;
-      width: 100%;
+      width: 100vw;
       height: 100%;
       z-index: 6;
       top: 0;
@@ -99,7 +102,7 @@
       text-align: center;
       margin-bottom: 2vw;
       margin-top: 6vw;
-      width: 100%;
+      width: 100vw;
       word-break: break-word;
     }
     .scroll-bg {
@@ -107,11 +110,11 @@
       justify-content: center;
       align-items: center;
       margin: 1vw auto 0 auto;
-      width: 90%;
+      width: 90vw;
       min-width: 180px;
       height: 7vw;
       background: url('scroll.png') center center no-repeat;
-      background-size: 100% 100%;
+      background-size: cover;
       z-index: 7;
       position: relative;
       font-size: 1.5vw;
@@ -137,8 +140,8 @@
       display: grid;
       position: relative;
       background: none;
-      width: 100%;
-      flex: 1 1 40%; /* take up the rest */
+      width: 100vw;
+      height: 40vh;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(5, 1fr);
       gap: 2vw;
@@ -165,7 +168,7 @@
     .ui-layer {
       position: absolute;
       top: 0; left: 0;
-      width: 100%;
+      width: 100vw;
       height: 100%;
       z-index: 5;
       display: grid;
@@ -263,15 +266,15 @@
 
     /* Responsive tweaks */
     @media (max-width: 700px), (max-height: 700px) {
-      .aspect-ratio-box { width: 99vw; height: 99vh; }
+      .aspect-ratio-box { width: 100vw; height: 100vh; }
       .hero {
         min-height: 140px;
-        flex: 0 0 65vw;
+        height: 65vh;
         max-height: none;
       }
-      .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100%; }
-      .scroll-bg { width: 98vw; font-size: 4vw; height: 12vw; min-width: 120px;}
-      .main-content { min-height: 150px; }
+      .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
+      .scroll-bg { width: 97vw; font-size: 4vw; height: 12vw; min-width: 120px;}
+      .main-content { min-height: 150px; height: 35vh; }
       .main-content img { width: 88%; }
       .ui-layer img, .ui-layer a { width: 90%; }
       #icon-button img { width: 17vw; height: 17vw; }
