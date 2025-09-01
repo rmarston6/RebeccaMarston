@@ -32,7 +32,7 @@
     .aspect-ratio-box {
       position: relative;
       width: 96vw;
-      height: calc(96vw * 0.5625); /* 16:9 aspect ratio */
+      height: 96vh;
       max-width: 100vw;
       max-height: 100vh;
       background: transparent;
@@ -49,6 +49,145 @@
         height: 96vh;
       }
     }
+
+    /* HERO SECTION: fixes applied */
+    .hero {
+      position: relative;
+      width: 100%;
+      flex: 0 0 60%; /* 60% of parent box height */
+      min-height: 250px;
+      max-height: 80vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      z-index: 4;
+      transition: opacity 0.3s;
+      pointer-events: auto;
+      margin: 0;
+      padding: 0;
+    }
+    .video-background {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%; 
+      height: 100%;
+      z-index: 0;
+      pointer-events: none;
+      background: url('49.jpg') center center no-repeat;
+      background-size: cover;
+    }
+    #particles-js {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      z-index: 6;
+      top: 0;
+      left: 0;
+      pointer-events: none;
+    }
+    .hero h1 {
+      position: relative;
+      z-index: 5;
+      font-size: 8vw;
+      margin: 0;
+      line-height: 1;
+      font-family: 'Digitany', sans-serif;
+      color: white;
+      letter-spacing: normal;
+      text-align: center;
+      margin-bottom: 2vw;
+      margin-top: 6vw;
+      width: 100%;
+      word-break: break-word;
+    }
+    .scroll-bg {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 1vw auto 0 auto;
+      width: 90%;
+      min-width: 180px;
+      height: 7vw;
+      background: url('scroll.png') center center no-repeat;
+      background-size: 100% 100%;
+      z-index: 7;
+      position: relative;
+      font-size: 1.5vw;
+      color: #322100;
+      text-shadow: 0 1px 8px #fffbe4, 0 0 2px #fffbe4;
+      font-family: 'Digitany', serif;
+      box-shadow: 0 2px 12px rgba(80,60,40,0.15);
+      text-align: center;
+    }
+    .scroll-bg span {
+      padding-top: 0.8vw;
+      width: 100%;
+      display: flex;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1em;
+      word-break: break-word;
+    }
+
+    /* MAIN CONTENT BELOW HERO */
+    .main-content {
+      display: grid;
+      position: relative;
+      background: none;
+      width: 100%;
+      flex: 1 1 40%; /* take up the rest */
+      grid-template-columns: repeat(5, 1fr);
+      grid-template-rows: repeat(5, 1fr);
+      gap: 2vw;
+      isolation: isolate;
+      z-index: 2;
+      min-height: 200px;
+    }
+    .main-content img {
+      width: 80%;
+      height: auto;
+      max-width: 100%;
+      max-height: 100%;
+      object-fit: contain;
+      justify-self: center;
+      align-self: center;
+      transition: all 0.2s;
+    }
+    .coffee-mug      { grid-column: 1; grid-row: 4; transform: translate(0,0); }
+    .fiddle-leaf-fig-plant { grid-column: 4; grid-row: 1; transform: translate(0,0);}
+    .jade-plant      { grid-column: 1; grid-row: 3; transform: translate(0,0);}
+    .planner         { grid-column: 2; grid-row: 2; transform: translate(0,0) rotate(8deg);}
+    .red-book        { grid-column: 4; grid-row: 4; transform: translate(0,0);}
+    .wisteria-bonsai { grid-column: 1; grid-row: 1; transform: translate(0,0);}
+    .ui-layer {
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 5;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-template-rows: repeat(4, 1fr);
+      gap: 2vw;
+      pointer-events: none;
+    }
+    .ui-layer img,
+    .ui-layer a {
+      pointer-events: auto;
+      width: 80%;
+      max-width: 100%;
+      max-height: 100%;
+      justify-self: center;
+      align-self: center;
+    }
+    .ui-author { grid-column: 1; grid-row: 1; }
+    .ui-etsy   { grid-column: 4; grid-row: 2; }
+    .ui-current-works { grid-column: 1; grid-row: 2; }
+    .ui-subscribe { grid-column: 4; grid-row: 3; }
+
     /* Fixed Menu Button and Menu */
     #icon-button {
       position: absolute;
@@ -121,154 +260,18 @@
       color: #a97e3f;
       text-shadow: 0 0 2px #fffbe4;
     }
-    /* HERO SECTION */
-    .hero {
-      position: relative;
-      width: 100%;
-      height: 40%;
-      min-height: 180px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      z-index: 4;
-      transition: opacity 0.3s;
-      pointer-events: auto;
-      margin-bottom: 0;
-      padding-bottom: 0;
-    }
-    .video-background {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
-      pointer-events: none;
-      background: url('49.jpg') center center no-repeat;
-      background-size: cover;
-    }
-    #particles-js {
-      position: absolute;
-      width: 100%;
-      height: 100%;
-      z-index: 6;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-    }
-    .hero h1 {
-      position: relative;
-      z-index: 5;
-      font-size: 8vw;
-      margin: 0;
-      line-height: 1;
-      font-family: 'Digitany', sans-serif;
-      color: white;
-      letter-spacing: normal;
-      text-align: center;
-      margin-bottom: 2vw;
-      margin-top: 6vw;
-      width: 100%;
-      word-break: break-word;
-    }
-    .scroll-bg {
-      padding-top: 0px;
-      padding-bottom: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 1vw auto 0 auto;
-      width: 90%;
-      min-width: 180px;
-      height: 7vw;
-      background: url('scroll.png') center center no-repeat;
-      background-size: 100% 100%;
-      z-index: 7;
-      position: relative;
-      font-size: 1.5vw;
-      color: #322100;
-      text-shadow: 0 1px 8px #fffbe4, 0 0 2px #fffbe4;
-      font-family: 'Digitany', serif;
-      box-shadow: 0 2px 12px rgba(80,60,40,0.15);
-      text-align: center;
-    }
-    .scroll-bg span {
-      padding-top: 0.8vw;
-      width: 100%;
-      display: flex;
-      height: 100%;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.1em;
-      word-break: break-word;
-    }
-    /* MAIN CONTENT BELOW HERO */
-    .main-content {
-      display: grid;
-      position: relative;
-      background: none;
-      width: 100%;
-      height: 60%;
-      margin-top: 0;
-      grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 1fr);
-      gap: 2vw;
-      isolation: isolate;
-      z-index: 2;
-    }
-    .main-content img {
-      width: 80%;
-      height: auto;
-      max-width: 100%;
-      max-height: 100%;
-      object-fit: contain;
-      justify-self: center;
-      align-self: center;
-      transition: all 0.2s;
-    }
-    /* Example grid positions */
-    .coffee-mug      { grid-column: 1; grid-row: 4; transform: translate(0,0); }
-    .fiddle-leaf-fig-plant { grid-column: 4; grid-row: 1; transform: translate(0,0);}
-    .jade-plant      { grid-column: 1; grid-row: 3; transform: translate(0,0);}
-    .planner         { grid-column: 2; grid-row: 2; transform: translate(0,0) rotate(8deg);}
-    .red-book        { grid-column: 4; grid-row: 4; transform: translate(0,0);}
-    .wisteria-bonsai { grid-column: 1; grid-row: 1; transform: translate(0,0);}
-    /* UI Layer grid */
-    .ui-layer {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 5;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 2vw;
-      pointer-events: none;
-    }
-    .ui-layer img,
-    .ui-layer a {
-      pointer-events: auto;
-      width: 80%;
-      max-width: 100%;
-      max-height: 100%;
-      justify-self: center;
-      align-self: center;
-    }
-    .ui-author { grid-column: 1; grid-row: 1; }
-    .ui-etsy   { grid-column: 4; grid-row: 2; }
-    .ui-current-works { grid-column: 1; grid-row: 2; }
-    .ui-subscribe { grid-column: 4; grid-row: 3; }
+
     /* Responsive tweaks */
     @media (max-width: 700px), (max-height: 700px) {
-      .aspect-ratio-box { width: 99vw; }
+      .aspect-ratio-box { width: 99vw; height: 99vh; }
       .hero {
-        height: 44vw;
         min-height: 140px;
+        flex: 0 0 65vw;
+        max-height: none;
       }
       .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100%; }
       .scroll-bg { width: 98vw; font-size: 4vw; height: 12vw; min-width: 120px;}
+      .main-content { min-height: 150px; }
       .main-content img { width: 88%; }
       .ui-layer img, .ui-layer a { width: 90%; }
       #icon-button img { width: 17vw; height: 17vw; }
