@@ -50,7 +50,7 @@
     #side-menu {
       position: fixed;
       top: 14vw;
-      right: -80vw; /* pushed further out of sight */
+      right: -80vw;
       width: 18vw;
       min-width: 180px;
       height: 22vw;
@@ -104,9 +104,9 @@
     /* --- HERO SECTION --- */
     .hero {
       width: 100vw;
-      height: 100vh;
       min-height: 100vh;
-      max-height: 100vh;
+      height: auto;
+      max-height: none;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -198,7 +198,6 @@
       min-height: 650px;
       max-height: 760px;
     }
-    /* Default, but now easily overridden by individual classes */
     .main-content img,
     .ui-layer img {
       width: 80%;
@@ -211,7 +210,7 @@
       transition: all 0.2s;
     }
 
-    /* --- Individual PNG Sizing: Desktop/tablet --- */
+    /* Individual PNG Sizing: Desktop/tablet */
     .coffee-mug      { width: 60%; max-width: 140px; }
     .fiddle-leaf-fig-plant { width: 85%; max-width: 180px; }
     .jade-plant      { width: 70%; max-width: 120px; }
@@ -224,15 +223,15 @@
     .ui-current-works{ width: 90%; max-width: 200px; }
     .ui-subscribe    { width: 70%; max-width: 140px; }
 
-    /* --- Responsive tweaks --- */
+    /* --- Responsive tweaks for mobile --- */
     @media (max-width: 700px), (max-height: 700px) {
       .hero,
       .video-background,
       #particles-js {
         width: 100vw;
         min-height: 100vh;
-        height: 100vh;
-        max-height: 100vh;
+        height: auto;
+        max-height: none;
       }
       .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
       .scroll-bg { width: 97vw; font-size: 4vw; height: 12vw; min-width: 120px;}
@@ -241,19 +240,22 @@
         max-height: 540px;
         padding-top: 6vw;
         padding-bottom: 50px;
+        /* Make grid cells larger for mobile */
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
       }
-      /* --- Individual PNG Sizing: Mobile --- */
-      .coffee-mug         { width: 40%; max-width: 70px; }
-      .fiddle-leaf-fig-plant { width: 55%; max-width: 90px; }
-      .jade-plant         { width: 45%; max-width: 60px; }
-      .planner            { width: 100%; max-width: none; }
-      .red-book           { width: 32%; max-width: 50px; }
-      .wisteriabonsai     { width: 35%; max-width: 70px; }
+      /* PNG Sizing: Mobile */
+      .coffee-mug         { width: 70%; max-width: 120px; }
+      .fiddle-leaf-fig-plant { width: 80%; max-width: 130px; }
+      .jade-plant         { width: 75%; max-width: 110px; }
+      .planner            { width: 85%; max-width: 140px; }
+      .red-book           { width: 65%; max-width: 90px; }
+      .wisteriabonsai     { width: 75%; max-width: 120px; }
 
-      .ui-author          { width: 60%; max-width: 80px; }
-      .ui-etsy            { width: 50%; max-width: 70px; }
-      .ui-current-works   { width: 70%; max-width: 100px; }
-      .ui-subscribe       { width: 40%; max-width: 100px; }
+      .ui-author          { width: 85%; max-width: 130px; }
+      .ui-etsy            { width: 75%; max-width: 110px; }
+      .ui-current-works   { width: 90%; max-width: 150px; }
+      .ui-subscribe       { width: 70%; max-width: 90px; }
     }
   </style>
 </head>
