@@ -14,7 +14,7 @@
       margin: 0;
       padding: 0;
       width: 100vw;
-      height: 100vh;
+      min-height: 100vh;
       font-family: 'Digitany', sans-serif;
       background: black;
       overflow-x: hidden;
@@ -104,8 +104,7 @@
     /* --- HERO SECTION --- */
     .hero {
       width: 100vw;
-      height: 100vh;
-      min-height: 100vh;
+      min-height: 100vh; /* fills visible screen when opening */
       position: relative;
       display: flex;
       flex-direction: column;
@@ -188,13 +187,15 @@
       position: relative;
       background: none;
       width: 100vw;
-      min-height: 900px;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(5, 1fr);
       gap: 2vw;
       isolation: isolate;
       z-index: 2;
+      padding-bottom: 70px; /* Space at the bottom so content doesn't touch footer/edge */
       padding-top: 6vw;
+      min-height: 650px;   /* Reasonable length for your PNG/UI windows */
+      max-height: 760px;   /* Prevents excessive length */
     }
     .main-content img {
       width: 80%;
@@ -244,13 +245,18 @@
       .video-background,
       #particles-js {
         width: 100vw;
-        height: 100vh;
         min-height: 100vh;
+        height: 100vh;
         max-height: 100vh;
       }
       .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
       .scroll-bg { width: 97vw; font-size: 4vw; height: 12vw; min-width: 120px;}
-      .main-content { min-height: 950px; padding-top: 8vw;}
+      .main-content {
+        min-height: 490px;
+        max-height: 540px;
+        padding-top: 6vw;
+        padding-bottom: 50px;
+      }
       .main-content img { width: 88%; }
       .ui-layer img, .ui-layer a { width: 90%; }
       #icon-button img { width: 17vw; height: 17vw; }
