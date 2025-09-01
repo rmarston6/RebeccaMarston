@@ -46,6 +46,7 @@
       max-height: 124px;
       cursor: pointer;
       pointer-events: auto;
+      transition: all 0.2s;
     }
     #side-menu {
       position: fixed;
@@ -227,13 +228,12 @@
       display: grid;
       grid-template-columns: repeat(5, 1fr);
       grid-template-rows: repeat(5, 1fr);
-      /* Key line: allow clicks through except for children */
-      pointer-events: none; /* disables events for the overlay itself... */
+      pointer-events: none; /* disables events for the overlay itself */
     }
     /* UI windows are grid items in overlay */
     .ui-layer img,
     .ui-layer a {
-      pointer-events: auto; /* ...but enables clicks for the UI windows! */
+      pointer-events: auto; /* enables clicks for the UI windows! */
       width: 80%;
       max-width: 100%;
       max-height: 100%;
@@ -266,7 +266,6 @@
         max-height: 540px;
         padding-top: 6vw;
         padding-bottom: 50px;
-        /* Make grid cells larger for mobile */
         grid-template-columns: repeat(2, 1fr);
         grid-template-rows: repeat(4, 1fr);
       }
@@ -286,6 +285,14 @@
       .ui-etsy            { width: 75%; max-width: 110px; grid-column: 2; grid-row: 2; }
       .ui-current-works   { width: 90%; max-width: 150px; grid-column: 1; grid-row: 3; }
       .ui-subscribe       { width: 70%; max-width: 90px; grid-column: 2; grid-row: 4; }
+
+      /* Make the menu icon larger on mobile */
+      #icon-button img {
+        width: 22vw;
+        height: 22vw;
+        max-width: 200px;
+        max-height: 200px;
+      }
     }
   </style>
 </head>
