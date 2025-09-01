@@ -1,491 +1,58 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <link rel="icon" type="image/png" href="IMG_3198.png">
-  <meta charset="UTF-8">
-  <title>Rebecca Marston</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
-    @font-face {
-      font-family: 'Digitany';
-      src: url('Digitany.otf') format('opentype');
-    }
-    html {
-      margin: 0;
-      padding: 0;
-      min-height: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: 'Digitany', sans-serif;
-      background: black;
-    }
-
-    body {
-      margin: 0;
-      padding:0;
-      min-height: 100%;
-      height: 100%;
-      overflow-x: hidden;
-      overflow-y: auto;
-      font-family: 'Digitany', sans-serif;
-      background: url('desk.PNG');
-      background-size: 100% auto; 
-      background-position: top center;
-      background-repeat: repeat-y;
-      background-color: #000;
-    }
-    
-    /* --- Fixed Menu Button and Menu --- */
-    #icon-button {
-      position: fixed;
-      top: 20px;
-      right: 40px;
-      z-index: 1060;
-      background: none;
-      border: none;
-      padding: 0;
-      cursor: pointer;
-    }
-    #icon-button img {
-      width: 124px;
-      height: 124px;
-      cursor: pointer;
-      pointer-events: auto;
-    }
-    #side-menu {
-      position: fixed;
-      top: 140px;
-      right: -300px;
-      width: 240px;
-      height: 340px;
-      background: url('menupopup.PNG') no-repeat center center;
-      background-size: contain;
-      border: none;
-      transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
-      z-index: 2000;
-      padding: 0;
-      color: #4e3c17;
-      font-family: 'Digitany', serif;
-      letter-spacing: 0.5px;
+    html, body {
+      width: 100vw; height: 100vh;
+      margin: 0; padding: 0;
       overflow: hidden;
+    }
+    .aspect-content-wrapper {
       display: flex;
-      flex-direction: column;
       justify-content: center;
       align-items: center;
+      width: 100vw; height: 100vh;
+      overflow: hidden;
+      background: url('desk.PNG') center center / cover;
     }
-    #side-menu.show {
-      right: -11px;
+    .aspect-ratio-box {
+      width: 100vw;
+      height: calc(100vw * 0.75); /* 4:3 aspect ratio */
+      max-width: 100vw;
+      max-height: 100vh;
+      background: rgba(255,255,255,0.01);
+      position: relative;
     }
-    #side-menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    #side-menu li {
-      margin: 28px 0;
-      text-align: center;
-      width: 100%;
-    }
-    #side-menu a {
-      text-decoration: none;
-      color: #4e3c17;
-      font-size: 1.18em;
-      font-family: 'Digitany', serif;
-      transition: color 0.2s;
-      display: block;
-    }
-    #side-menu a:hover {
-      color: #a97e3f;
-      text-shadow: 0 0 2px #fffbe4;
-    }
-    /* --- HERO SECTION --- */
-    section {margin: 0;
-             padding: 0;
+    @media (max-aspect-ratio: 4/3) {
+      .aspect-ratio-box {
+        width: calc(100vh * 1.3333);
+        height: 100vh;
       }
-    .hero {
-      position: relative;
-      width: 100vw;
-      height: 100vh;
-      min-height: 500px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      z-index: 4;
-      transition: opacity 0.3s;
-      pointer-events: auto;
-      margin-bottom: 0;
-      padding-bottom: 0;
     }
-    .video-background {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw; 
-      height: 100vh;
-      z-index: 0;
-      pointer-events: none;
-      background: url('49.jpg') center center no-repeat;
-      background-size: cover;
-      background-position: center;
-    }
-    #particles-js {
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
-      z-index: 6;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-    }
-    /* REMOVED: .cloud-behind-name and related styles */
-    .hero h1 {
-      position: relative;
-      z-index: 5;
-      font-size: 11vw;
-      margin: 0 0 0px 0;
-      line-height: 1;
-      font-family: 'Digitany', sans-serif;
-      color: white;
-      letter-spacing: normal;
-      text-align: center;
-      margin-bottom: 30px;
-      margin-top: 120px;
-    }
-    .scroll-bg {
-      padding-top: 0px;
-      padding-bottom: 0px;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin: 18px auto 0 auto;
-      width: 800px;
-      min-width: 320px;
-      height: 150px;
-      background: url('scroll.png') center center no-repeat;
-      background-size: 100% 100%;
-      z-index: 7;
-      position: relative;
-      font-size: 1.4em;
-      color: #322100;
-      text-shadow: 0 1px 8px #fffbe4, 0 0 2px #fffbe4;
-      font-family: 'Digitany', serif;
-      box-shadow: 0 2px 12px rgba(80,60,40,0.15);
-      text-align: center;
-    }
-    .scroll-bg span {
-      padding-top: 22px;
+    .responsive-grid {
+      display: grid;
       width: 100%;
-      display: flex;
       height: 100%;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.05em;
-    }
-    /* --- MAIN CONTENT BELOW HERO --- */
-    .main-content {
-      display: grid;
-      position: relative;
-      background: none;
-      padding-bottom: 0px;
-      width: 100%;
-      margin-top: 0;
-      padding-top: 0;
       grid-template-columns: repeat(5, 1fr);
-      grid-template-rows: repeat(5, 320px);
-      gap: 40px;
-      isolation: isolate;
-      z-index: 2;
+      grid-template-rows: repeat(5, 1fr);
+      gap: 2vw;
+      position: absolute; top: 0; left: 0;
     }
-    
-  /* .dappled-light{
-  position:absolute;
-  inset:-15vh -15vw;
-  pointer-events:none;
-  z-index:4;                 /* between desk (3) and UI (5) */
-  /* mix-blend-mode: multiply;/* brighter than multiply; try overlay for punchier */
-  /*overflow:hidden;
-}
-
-/* two huge layers of soft blobs that drift */
-/*.dappled-light::before,
-.dappled-light::after{
-  content:"";
-  position:absolute;
-  inset:-12% -12%;
-
-  /* BIG blobs (viewport-scaled), placed around the section */
- /* background:
-    radial-gradient(60% 60% at 18% 18%, rgba(255,255,255,.90) 0 30%, rgba(0,0,0,.22) 52%, transparent 60%),
-    radial-gradient(60% 60% at 72% 22%, rgba(255,255,255,.90) 0 28%, rgba(0,0,0,.20) 50%, transparent 58%),
-    radial-gradient(60% 60% at 30% 68%, rgba(255,255,255,.90) 0 30%, rgba(0,0,0,.22) 52%, transparent 60%),
-    radial-gradient(60% 60% at 82% 74%, rgba(255,255,255,.85) 0 26%, rgba(0,0,0,.18) 48%, transparent 56%),
-    radial-gradient(60% 60% at 50% 50%, rgba(255,255,255,.90) 0 24%, rgba(0,0,0,.20) 46%, transparent 54%);
-  background-repeat: no-repeat;
-
-  /* size of each blob image */
-/*  background-size:
-    500vmax 60vmax,
-    56vmax 1100vmax,
-    400vmax 58vmax,
-    52vmax 200vmax,
-    2000vmax 2000vmax;
-
-  /* <<< THIS spreads the layers so they aren’t all at 0 0 */
- /* background-position:
-    10% 12%,   /* top-left */
-    82% 14%,   /* top-right */
-    24% 74%,   /* bottom-left */
-    86% 76%,   /* bottom-right */
-    50% 52%;   /* center */
-
- /* filter: blur(22px);
-  opacity: .95;
-}
-
-.dappled-light::before{ animation: panA 18s ease-in-out infinite alternate; }
-.dappled-light::after { animation: panB 22s ease-in-out infinite alternate; opacity:.6; }
-
-@keyframes panA { to { transform: translate3d( 2%, -3%, 0); } }
-@keyframes panB { to { transform: translate3d(-2%,  2%, 0); } }
-
-/* keep the section height matched to your visual bottom */
-.main-content{ padding-bottom: 1150px; } /* adjust 1000–1300px to taste */ 
-
-
-
-     .coffee-mug {
-      justify-self: start;
-      align-self: start;
-      width: 820px; /* Adjust size as desired */
-      grid-column: 1/2;
-      grid-row: 4/5;
-      transform: translate(-150px, 1000px);
-      z-index: 3;
-    }
-    
-     .fiddle-leaf-fig-plant {
-      justify-self: start;
-      align-self: start;
-      width: 1000px; /* Adjust size as desired */
-      grid-column: 4/5;
-      grid-row: 1/2;
-      transform: translate(-300px, -250px);
-      z-index: 3;
-    }
-
-    .jade-plant {
-      justify-self: start;
-      align-self: start;
-      width: 500px; /* Adjust size as desired */
-      grid-column: 1/2;
-      grid-row: 3/4;
-      transform: translate(-50px, 300px);
-      z-index: 3;
-    }
-
-    .planner {
-      justify-self: start;
-      align-self: start;
-      width: 1300px; /* Adjust size as desired */
-      grid-column: 2/3;
-      grid-row: 2/3;
-      transform: translate(20px, -50px) rotate(25deg);
-      z-index: 3;
-    }
-
-    .red-book {
-      justify-self: start;
-      align-self: start;
-      width: 1200px; /* Adjust size as desired */
-      grid-column: 4/5;
-      grid-row: 4/5;
-      transform: translate(-800px, 800px);
-      z-index: 3;
-    }
-
-    .wisteria-bonsai {
-      justify-self: start;
-      align-self: start;
-      width: 1000px; /* Adjust size as desired */
-      grid-column: 1/2;
-      grid-row: 1/2;
-      transform: translate(-220px, -120px);
-      z-index: 3;
-    }
-
-    /* Desk Layer */
-    .desk-layer {
-      display: grid;
-      z-index: 2; /*sits behind*/
-    }
-
-    .ui-layer {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: 5;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columns for 4 UI windows */
-  grid-template-rows: repeat(6, 1000px); /* 4 rows of 350px each */ 
-  gap: 40px;
-  padding-top: 60px;
-  pointer-events: none;
-}
-
-.ui-layer img,
-.ui-layer a {
-  pointer-events: auto;
-  width: 1000px;
-  justify-self: left;
-  align-self: start;
-}
-   .ui-author {
-      width: 700px;
-      position: relative; /*so you can nudge them with margin */
-      z-index: 5;
-      grid-column: 1/2;
-      grid-row: 1/2;
-      transform: translate(400px, 230px);
-    }
-
-    .ui-etsy {
-      width: 400px;
-      position: relative; /*so you can nudge them with margin */
-      z-index: 5;
-      grid-column: 5/6;
-      grid-row: 2/3;
-      transform: translate(-140px, -85px);
-    }
-
-    .ui-current-works {
-      width: 1000px;
-      position: relative; /*so you can nudge them with margin */
-      z-index: 5;
-      grid-column: 1/2;
-      grid-row: 2/3;
-      transform: translate(20px, 100px);
-    }
-
-    .ui-subscribe {
-      width: 880px;
-      position: relative; /*so you can nudge them with margin */
-      z-index: 5;
-      grid-column: 4/5;
-      grid-row:3/4;
-      transform: translate(200px, 200px);
-    }
-    
-    /* Responsive tweaks */
-    @media (max-width: 700px) {
-      .hero h1 { font-size: 9vw; }
-      .scroll-bg { width: 98vw; min-width: unset; }
+    .grid-item {
+      width: 80%; height: 80%;
+      object-fit: contain;
+      justify-self: center; align-self: center;
     }
   </style>
 </head>
 <body>
- 
-  <!-- Fixed Menu Button and Menu -->
-  <button id="icon-button">
-    <img id="menu-icon" src="potato 3.PNG" alt="Menu">
-  </button>
- 
-  <div id="side-menu">
-    <ul>
-      <li><a href="#about">About</a></li>
-      <li><a href="#currentwork">Current Work</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </div>
- 
-  <!-- HERO SECTION -->
-  <section class="hero" id="hero">
-    <div class="video-background"></div>
-    <div id="particles-js"></div>
-    <!-- REMOVED: Cloud animation -->
-    <h1>Rebecca Marston</h1>
-    <div class="scroll-bg">
-      <span>Author of soft apocalypses, life-affirming grief, and wild gardens of tangled thought.</span>
+  <div class="aspect-content-wrapper">
+    <div class="aspect-ratio-box">
+      <div class="responsive-grid">
+        <!-- Your images/components here -->
+      </div>
     </div>
-  </section>
- 
-  <!-- MAIN CONTENT BELOW HERO -->
-  <section class="main-content">
-      <img src="coffee mug.PNG" alt="Coffee Mug" class="coffee-mug" />
-      <img src="fiddleleaffig.PNG" alt="Fiddle Leaf Fig" class="fiddle-leaf-fig-plant" />
-      <img src="jadeplant.PNG" alt="Jade Plant" class="jade-plant" />
-      <img src="planner.PNG" alt="Planner" class="planner" />
-      <img src="redbook.PNG" alt="Red Book" class="red-book" />
-      <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
-
-    <!-- Dappled light overlay (insert this inside .main-content, before .ui-layer) -->
-    <!--<div class="dappled-light"></div>
-    
-       <!-- Foreground UI Windows -->
-    <div class="ui-layer">
-     <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
-        <a href="https://www.etsy[dot]com/shop/Elevatai" target="_blank" class="ui-etsy">
-          <img src="EtsyLink.png" alt="Etsy UI" />
-       </a>
-     <img src="CurrentWorksUI.png" class="ui-current-works" alt="Current Works UI" />
-       <a href="https://rebeccamarston.kit[dot]com/193ca21bb0" target="_blank" class="ui-subscribe">
-          <img src="SubscribeUI.png" alt="Subscribe UI" />
-       </a>
   </div>
-</section>
-  
-  <!-- PARTICLE LIBRARY -->
-  <script src="particles.min.js"></script>
-  <script>
-    particlesJS.load('particles-js', 'particles.json', function() {
-      console.log('Particles.js config loaded');
-    });
-
-    // Icon swap and menu toggle
-    const iconButton = document.getElementById('icon-button');
-    const icon = document.getElementById('menu-icon');
-    const sideMenu = document.getElementById('side-menu');
-
-    iconButton.addEventListener('click', () => {
-      if (
-        icon.src.endsWith('potato%203.PNG') ||
-        icon.src.endsWith('potato 3.PNG')
-      ) {
-        icon.src = 'potatoawake.PNG';
-        sideMenu.classList.add('show');
-      } else {
-        icon.src = 'potato 3.PNG';
-        sideMenu.classList.remove('show');
-      }
-    });
-
-    document.addEventListener('click', function(event) {
-      const isClickOnMenu = sideMenu.contains(event.target);
-      const isClickOnIcon = iconButton.contains(event.target);
-
-      if (sideMenu.classList.contains('show') && !isClickOnMenu && !isClickOnIcon) {
-        icon.src = 'potato 3.PNG';
-        sideMenu.classList.remove('show');
-      }
-    });
-
-    // HERO FADE-OUT ON SCROLL
-    window.addEventListener('scroll', function() {
-      const hero = document.querySelector('.hero');
-      let scrollY = window.scrollY;
-      let fadeStart = 0, fadeEnd = window.innerHeight * 0.7;
-      let opacity = 1;
-      if (scrollY > fadeStart) {
-        opacity = 1 - Math.min((scrollY - fadeStart) / (fadeEnd - fadeStart), 1);
-      }
-      hero.style.opacity = opacity;
-      hero.style.pointerEvents = (opacity < 0.1) ? "none" : "auto";
-    });
-  </script>
 </body>
 </html>
