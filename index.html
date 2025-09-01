@@ -131,6 +131,7 @@
       display: flex;
       flex-direction: column;
       align-items: center;
+      justify-content: center;
       z-index: 4;
       transition: opacity 0.3s;
       pointer-events: auto;
@@ -140,7 +141,7 @@
     .video-background {
       position: absolute;
       top: 0; left: 0;
-      width: 100%; 
+      width: 100%;
       height: 100%;
       z-index: 0;
       pointer-events: none;
@@ -168,6 +169,8 @@
       text-align: center;
       margin-bottom: 2vw;
       margin-top: 6vw;
+      width: 100%;
+      word-break: break-word;
     }
     .scroll-bg {
       padding-top: 0px;
@@ -176,9 +179,9 @@
       justify-content: center;
       align-items: center;
       margin: 1vw auto 0 auto;
-      width: 40vw;
-      min-width: 200px;
-      height: 6vw;
+      width: 90%;
+      min-width: 180px;
+      height: 7vw;
       background: url('scroll.png') center center no-repeat;
       background-size: 100% 100%;
       z-index: 7;
@@ -198,6 +201,7 @@
       align-items: center;
       justify-content: center;
       font-size: 1.1em;
+      word-break: break-word;
     }
     /* MAIN CONTENT BELOW HERO */
     .main-content {
@@ -259,9 +263,13 @@
     /* Responsive tweaks */
     @media (max-width: 700px), (max-height: 700px) {
       .aspect-ratio-box { width: 99vw; }
-      .hero h1 { font-size: 12vw; margin-top: 10vw; }
-      .scroll-bg { width: 90vw; font-size: 3vw; height: 10vw;}
-      .main-content img { width: 90%; }
+      .hero {
+        height: 44vw;
+        min-height: 140px;
+      }
+      .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100%; }
+      .scroll-bg { width: 98vw; font-size: 4vw; height: 12vw; min-width: 120px;}
+      .main-content img { width: 88%; }
       .ui-layer img, .ui-layer a { width: 90%; }
       #icon-button img { width: 17vw; height: 17vw; }
       #side-menu { width: 30vw; min-width: 180px; height: 40vw; min-height: 220px;}
