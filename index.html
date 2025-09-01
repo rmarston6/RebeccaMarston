@@ -50,7 +50,7 @@
     #side-menu {
       position: fixed;
       top: 14vw;
-      right: -30vw;
+      right: -80vw; /* pushed further out of sight */
       width: 18vw;
       min-width: 180px;
       height: 22vw;
@@ -104,7 +104,9 @@
     /* --- HERO SECTION --- */
     .hero {
       width: 100vw;
-      min-height: 100vh; /* fills visible screen when opening */
+      height: 100vh;
+      min-height: 100vh;
+      max-height: 100vh;
       position: relative;
       display: flex;
       flex-direction: column;
@@ -291,7 +293,7 @@
       <img src="jadeplant.PNG" alt="Jade Plant" class="jade-plant" />
       <img src="planner.PNG" alt="Planner" class="planner" />
       <img src="redbook.PNG" alt="Red Book" class="red-book" />
-      <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteria-bonsai" />
+      <img src="wisteriabonsai.PNG" alt="Wisteria Bonsai" class="wisteriabonsai" />
       <!-- Foreground UI Windows -->
       <div class="ui-layer">
         <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
@@ -334,7 +336,7 @@
         sideMenu.classList.remove('show');
       }
     });
-    // Removed HERO FADE-OUT ON SCROLL
+    // No scroll fade!
   </script>
 </body>
 </html>
