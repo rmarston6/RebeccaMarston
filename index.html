@@ -112,7 +112,6 @@
       justify-content: center;
       overflow: hidden;
       z-index: 4;
-      transition: opacity 0.3s;
       pointer-events: auto;
       margin: 0;
       padding: 0;
@@ -335,18 +334,7 @@
         sideMenu.classList.remove('show');
       }
     });
-    // HERO FADE-OUT ON SCROLL
-    window.addEventListener('scroll', function() {
-      const hero = document.querySelector('.hero');
-      let scrollY = window.scrollY;
-      let fadeStart = 0, fadeEnd = window.innerHeight * 0.7;
-      let opacity = 1;
-      if (scrollY > fadeStart) {
-        opacity = 1 - Math.min((scrollY - fadeStart) / (fadeEnd - fadeStart), 1);
-      }
-      hero.style.opacity = opacity;
-      hero.style.pointerEvents = (opacity < 0.1) ? "none" : "auto";
-    });
+    // Removed HERO FADE-OUT ON SCROLL
   </script>
 </body>
 </html>
