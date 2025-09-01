@@ -193,12 +193,14 @@
       gap: 2vw;
       isolation: isolate;
       z-index: 2;
-      padding-bottom: 70px; /* Space at the bottom so content doesn't touch footer/edge */
+      padding-bottom: 70px;
       padding-top: 6vw;
-      min-height: 650px;   /* Reasonable length for your PNG/UI windows */
-      max-height: 760px;   /* Prevents excessive length */
+      min-height: 650px;
+      max-height: 760px;
     }
-    .main-content img {
+    /* Default, but now easily overridden by individual classes */
+    .main-content img,
+    .ui-layer img {
       width: 80%;
       height: auto;
       max-width: 100%;
@@ -208,37 +210,19 @@
       align-self: center;
       transition: all 0.2s;
     }
-    .coffee-mug      { grid-column: 1; grid-row: 4; transform: translate(0,0); }
-    .fiddle-leaf-fig-plant { grid-column: 4; grid-row: 1; transform: translate(0,0);}
-    .jade-plant      { grid-column: 1; grid-row: 3; transform: translate(0,0);}
-    .planner         { grid-column: 2; grid-row: 2; transform: translate(0,0) rotate(9deg);}
-    .red-book        { grid-column: 4; grid-row: 4; transform: translate(0,0);}
-    .wisteria-bonsai { grid-column: 1; grid-row: 1; transform: translate(0,0);}
-    .ui-layer {
-      position: absolute;
-      top: 0; left: 0;
-      width: 100vw;
-      height: 100%;
-      z-index: 5;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      grid-template-rows: repeat(4, 1fr);
-      gap: 2vw;
-      pointer-events: none;
-    }
-    .ui-layer img,
-    .ui-layer a {
-      pointer-events: auto;
-      width: 80%;
-      max-width: 100%;
-      max-height: 100%;
-      justify-self: center;
-      align-self: center;
-    }
-    .ui-author { grid-column: 1; grid-row: 1; }
-    .ui-etsy   { grid-column: 4; grid-row: 2; }
-    .ui-current-works { grid-column: 1; grid-row: 2; }
-    .ui-subscribe { grid-column: 4; grid-row: 3; }
+
+    /* --- Individual PNG Sizing: Desktop/tablet --- */
+    .coffee-mug      { width: 60%; max-width: 140px; }
+    .fiddle-leaf-fig-plant { width: 85%; max-width: 180px; }
+    .jade-plant      { width: 70%; max-width: 120px; }
+    .planner         { width: 82%; max-width: 160px; }
+    .red-book        { width: 50%; max-width: 100px; }
+    .wisteriabonsai  { width: 60%; max-width: 140px; }
+
+    .ui-author       { width: 88%; max-width: 180px; }
+    .ui-etsy         { width: 75%; max-width: 160px; }
+    .ui-current-works{ width: 90%; max-width: 200px; }
+    .ui-subscribe    { width: 70%; max-width: 140px; }
 
     /* --- Responsive tweaks --- */
     @media (max-width: 700px), (max-height: 700px) {
@@ -258,10 +242,18 @@
         padding-top: 6vw;
         padding-bottom: 50px;
       }
-      .main-content img { width: 88%; }
-      .ui-layer img, .ui-layer a { width: 90%; }
-      #icon-button img { width: 17vw; height: 17vw; }
-      #side-menu { width: 30vw; min-width: 180px; height: 40vw; min-height: 220px;}
+      /* --- Individual PNG Sizing: Mobile --- */
+      .coffee-mug         { width: 40%; max-width: 70px; }
+      .fiddle-leaf-fig-plant { width: 55%; max-width: 90px; }
+      .jade-plant         { width: 45%; max-width: 60px; }
+      .planner            { width: 50%; max-width: 140px; }
+      .red-book           { width: 32%; max-width: 50px; }
+      .wisteriabonsai     { width: 35%; max-width: 70px; }
+
+      .ui-author          { width: 60%; max-width: 80px; }
+      .ui-etsy            { width: 50%; max-width: 70px; }
+      .ui-current-works   { width: 70%; max-width: 100px; }
+      .ui-subscribe       { width: 40%; max-width: 100px; }
     }
   </style>
 </head>
