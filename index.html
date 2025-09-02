@@ -51,7 +51,7 @@
       position: absolute;
       right: 10%;
       top: calc(1.3vw + 180px); /* adjust as needed for icon position */
-      transform: translate(10%, -5%);
+      transform: translate(20%, 0%);
       z-index: 2001;
       background: transparent;
       padding: 0;
@@ -76,7 +76,7 @@
       position: absolute;
       top: 38%;
       left: 50%;
-      transform: translate(10%, -30%);
+      transform: translate(4%, -35%);
       width: 80%;
       font-family: 'Digitany', sans-serif;
       font-size: 1.1em;
@@ -323,7 +323,7 @@
   
     <!-- Potato Icon Button -->
     <button id="icon-button">
-      <img id="menu-icon" src="potato 1.PNG" alt="Potato">
+      <img id="menu-icon" src="potato 3.PNG" alt="Potato">
     </button>
     <!-- Affirmation UI -->
     <div id="affirmation-ui">
@@ -397,7 +397,7 @@
         affirmationText.textContent = randomAffirmation;
         affirmationUI.classList.add('visible');
       } else {
-        icon.src = 'potato 1.PNG';
+        icon.src = 'potato 3.PNG';
         potatoAwake = false;
         affirmationUI.classList.remove('visible');
       }
@@ -408,7 +408,7 @@
       const isClickOnIcon = iconButton.contains(event.target);
       const isClickOnUI = affirmationUI.contains(event.target);
       if (potatoAwake && !isClickOnIcon && !isClickOnUI) {
-        icon.src = 'potato 1.PNG';
+        icon.src = 'potato 3.PNG';
         potatoAwake = false;
         affirmationUI.classList.remove('visible');
       }
