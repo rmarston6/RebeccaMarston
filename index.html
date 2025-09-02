@@ -46,59 +46,47 @@
       pointer-events: auto;
       transition: all 0.2s;
     }
-    #side-menu {
-      position: fixed;
-      top: 14vw;
-      right: -80vw;
-      width: 18vw;
-      min-width: 180px;
-      height: 22vw;
-      min-height: 220px;
-      background: url('menupopup.PNG') no-repeat center center;
-      background-size: contain;
-      border: none;
-      transition: right 0.4s cubic-bezier(.68,-0.55,.27,1.55);
-      z-index: 2000;
+        /* --- Affirmation UI --- */
+    #affirmation-ui {
+      position: absolute;
+      left: 50%;
+      top: calc(2vw + 180px); /* adjust as needed for icon position */
+      transform: translateX(-50%);
+      z-index: 2001;
+      background: transparent;
       padding: 0;
-      color: #4e3c17;
-      font-family: 'Digitany', serif;
-      letter-spacing: 0.5px;
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-    }
-    #side-menu.show {
-      right: -1vw;
-      top: 17%;
-    }
-    #side-menu ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
-      width: 80%;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    #side-menu li {
-      margin: 2vw 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.4s;
+      width: 250px;
+      max-width: 90vw;
       text-align: center;
+    }
+    #affirmation-ui.visible {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    #affirmation-ui img {
       width: 100%;
-    }
-    #side-menu a {
-      text-decoration: none;
-      color: #4e3c17;
-      font-size: 1.2em;
-      font-family: 'Digitany', serif;
-      transition: color 0.2s;
+      max-width: 250px;
       display: block;
+      margin: 0 auto;
     }
-    #side-menu a:hover {
-      color: #a97e3f;
-      text-shadow: 0 0 2px #fffbe4;
+    #affirmation-text {
+      position: absolute;
+      top: 38%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      font-family: 'Digitany', sans-serif;
+      font-size: 1.3em;
+      color: #b49aff;
+      text-shadow: 0 0 8px #fff8ff, 0 1px 8px #b49aff;
+      padding: 0.5em 0.2em;
+      pointer-events: none;
+      background: transparent;
+      word-break: break-word;
+      z-index: 2;
     }
 
     /* --- HERO SECTION --- */
@@ -313,27 +301,36 @@
       .ui-current-works   { width: 90%; max-width: 150px; grid-column: 1; grid-row: 3; transform: none;}
       .ui-subscribe       { width: 90%; max-width: 180px; grid-column: 2; grid-row: 4; transform: translate(0%, -95%);}
       /* Make the menu icon larger on mobile */
-      #icon-button img {
+     #icon-button img {
         width: 22vw;
         height: 22vw;
         max-width: 200px;
         max-height: 200px;
       }
+      #affirmation-ui {
+        width: 90vw;
+        max-width: 90vw;
+        top: calc(2vw + 200px);
+      }
+      #affirmation-text {
+        font-size: 1em;
+        width: 85%;
+      }
     }
   </style>
 </head>
 <body>
-    <!-- Fixed Menu Button and Menu -->
+  
+    <!-- Potato Icon Button -->
     <button id="icon-button">
-      <img id="menu-icon" src="potato 3.PNG" alt="Menu">
+      <img id="menu-icon" src="potato 3.PNG" alt="Potato">
     </button>
-    <div id="side-menu">
-      <ul>
-        <li><a href="#about">About</a></li>
-        <li><a href="#currentwork">Current Work</a></li>
-        <li><a href="#contact">Contact</a></li>
-      </ul>
+    <!-- Affirmation UI -->
+    <div id="affirmation-ui">
+      <img src="retro-computer-icon-9.svg" alt="Affirmation UI">
+      <span id="affirmation-text"></span>
     </div>
+  
     <!-- HERO SECTION -->
     <section class="hero" id="hero">
       <div class="video-background"></div>
@@ -369,31 +366,53 @@
     particlesJS.load('particles-js', 'particles.json', function() {
       console.log('Particles.js config loaded');
     });
-    // Icon swap and menu toggle
+    // Affirmations array
+    const affirmations = [
+      "You are enough, just as you are.",
+      "Every day is a new beginning.",
+      "You are capable of amazing things.",
+      "Your kindness makes a difference.",
+      "Rest is productive, too.",
+      "You can do hard things.",
+      "Your creativity is valuable.",
+      "You are loved.",
+      "It's okay to take it slow.",
+      "You have grown so much."
+    ];
+
     const iconButton = document.getElementById('icon-button');
     const icon = document.getElementById('menu-icon');
-    const sideMenu = document.getElementById('side-menu');
-    iconButton.addEventListener('click', () => {
-      if (
-        icon.src.endsWith('potato%203.PNG') ||
-        icon.src.endsWith('potato 3.PNG')
-      ) {
+    const affirmationUI = document.getElementById('affirmation-ui');
+    const affirmationText = document.getElementById('affirmation-text');
+
+    let potatoAwake = false;
+
+    iconButton.addEventListener('click', (event) => {
+      event.stopPropagation();
+      if (!potatoAwake) {
         icon.src = 'potatoawake.PNG';
-        sideMenu.classList.add('show');
+        potatoAwake = true;
+        // Pick a random affirmation
+        const randomAffirmation = affirmations[Math.floor(Math.random() * affirmations.length)];
+        affirmationText.textContent = randomAffirmation;
+        affirmationUI.classList.add('visible');
       } else {
         icon.src = 'potato 3.PNG';
-        sideMenu.classList.remove('show');
+        potatoAwake = false;
+        affirmationUI.classList.remove('visible');
       }
     });
+
+    // Hide affirmation UI if click outside potato icon or affirmation area
     document.addEventListener('click', function(event) {
-      const isClickOnMenu = sideMenu.contains(event.target);
       const isClickOnIcon = iconButton.contains(event.target);
-      if (sideMenu.classList.contains('show') && !isClickOnMenu && !isClickOnIcon) {
+      const isClickOnUI = affirmationUI.contains(event.target);
+      if (potatoAwake && !isClickOnIcon && !isClickOnUI) {
         icon.src = 'potato 3.PNG';
-        sideMenu.classList.remove('show');
+        potatoAwake = false;
+        affirmationUI.classList.remove('visible');
       }
     });
-    // No scroll fade!
   </script>
 </body>
 </html>
