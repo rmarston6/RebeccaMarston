@@ -260,6 +260,28 @@
       }
       .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
       .scroll-bg { width: 97vw; font-size: 4vw; height: 12vw; min-width: 120px;}
+
+       #icon-button img {
+        width: 22vw;
+        height: 22vw;
+        max-width: 200px;
+        max-height: 200px;
+      }
+      #affirmation-ui {
+        width: 90vw;
+        max-width: 90vw;
+        top: calc(2vw + 200px);
+        right: 10%;
+        transform: translate(0, 0);
+      }
+      #affirmation-ui img {
+        height: 200px;
+      }
+      #affirmation-text {
+        font-size: 1em;
+        width: 85%;
+      }
+      
       .main-content {
         width: 100%;
         max-width: 100vw;
@@ -372,13 +394,13 @@
     // Affirmations array
     const affirmations = [
       "You are enough, just as you are.",
-      "Every day is a new beginning.",
+      "Every day is a reset to move toward your goals.",
       "You are capable of amazing things.",
       "Your kindness makes a difference.",
       "Rest is productive, too.",
       "You can do hard things.",
       "Your creativity is valuable.",
-      "You are loved.",
+      "If you're carrying it, make it mean something.",
       "It's okay to take it slow.",
       "You have grown so much."
     ];
@@ -406,11 +428,16 @@
       }
     });
 
-    // Hide affirmation UI if click outside potato icon or affirmation area
-    document.addEventListener('click', function(event) {
-      const isClickOnIcon = iconButton.contains(event.target);
-      const isClickOnUI = affirmationUI.contains(event.target);
-      if (potatoAwake && !isClickOnIcon && !isClickOnUI) {
+        // Optional: prevent affirmation text itself from blocking clicks
+        affirmationText.addEventListener('click', (event) => {
+        event.stopPropagation();
+        });
+    
+       // Hide affirmation UI if click outside potato icon or affirmation area
+       document.addEventListener('click', function(event) {
+       const isClickOnIcon = iconButton.contains(event.target);
+       const isClickOnUI = affirmationUI.contains(event.target);
+       if (potatoAwake && !isClickOnIcon && !isClickOnUI) {
         icon.src = 'potato 3.PNG';
         potatoAwake = false;
         affirmationUI.classList.remove('visible');
