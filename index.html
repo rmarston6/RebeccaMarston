@@ -241,10 +241,6 @@
     .ui-current-works { grid-column: 4; grid-row: 4; transform: scale(4) translate(-110%, -125%);}
     .ui-subscribe     { grid-column: 5; grid-row: 5; transform: scale(3.8) translate(-70%, -130%);}
 
-
-
-
-    
     /* --- Responsive tweaks for MOBILE PHONESSSSSSS --- */
     @media (max-width: 700px), (max-height: 700px) {
       html, body {
@@ -338,50 +334,57 @@
       .ui-subscribe       { grid-column: 2; grid-row: 4; transform: scale(1.5) translate(0%, -95%);}
     }
 
-
-
-    
-
-
-
-/* 1920x1080 screens and similar SMALLER DESKTOPSSSSSSSSSSSS */
-
+    /* 1920x1080 screens and similar SMALLER DESKTOPSSSSSSSSSSSS */
     @media (max-width: 2000px) and (min-width: 1400px) and (max-height: 1150px) {
-  
-  .main-content {
-    gap: 1.2vw;
-    padding-bottom: 50px;
-    padding-top: 4vw;
-  }
-  .planner { transform: scale(2.1) rotate(19deg) translate(34%, -120%); }
-  .ui-author { transform: scale(2.8) translate(0%, -20%); }
-  .ui-etsy { transform: scale(1.4) translate(50px, 0px); }
-  .ui-current-works { transform: scale(2.2) translate(-50px, 0px); }
-  .ui-subscribe { transform: scale(1.5) translate(-50px, 0px); }
-  /* Adjust other PNGs as needed here */
-}
+      .main-content {
+        gap: 1.2vw;
+        padding-bottom: 50px;
+        padding-top: 4vw;
+      }
+      .planner { transform: scale(2.1) rotate(19deg) translate(34%, -120%); }
+      .ui-author { transform: scale(2.8) translate(0%, -20%); }
+      .ui-etsy { transform: scale(1.4) translate(50px, 0px); }
+      .ui-current-works { transform: scale(2.2) translate(-50px, 0px); }
+      .ui-subscribe { transform: scale(1.5) translate(-50px, 0px); }
+      /* Adjust other PNGs as needed here */
+    }
 
+    /* LAPTOPSSSSSSSSS */ 
+    @media (max-width: 1400px) {
+      .main-content {
+        gap: 0.8vw;
+        padding-bottom: 30px;
+        padding-top: 3vw;
+      }
+      .planner { transform: scale(1.3) rotate(19deg) translate(8%, -90%); }
+      .ui-author { transform: scale(1.7) translate(0%, -20%); }
+      .ui-etsy { transform: scale(1.1) translate(35px, 0px); }
+      .ui-current-works { transform: scale(1.5) translate(-15px, 0px); }
+      .ui-subscribe { transform: scale(1.2) translate(-15px, 0px); }
+      /* Adjust other PNGs as needed here */
+    }
 
-
-
-
-
-  /* LAPTOPSSSSSSSSS */ 
-    
-@media (max-width: 1400px) {
-  .main-content {
-    gap: 0.8vw;
-    padding-bottom: 30px;
-    padding-top: 3vw;
-  }
-  .planner { transform: scale(1.3) rotate(19deg) translate(8%, -90%); }
-  .ui-author { transform: scale(1.7) translate(0%, -20%); }
-  .ui-etsy { transform: scale(1.1) translate(35px, 0px); }
-  .ui-current-works { transform: scale(1.5) translate(-15px, 0px); }
-  .ui-subscribe { transform: scale(1.2) translate(-15px, 0px); }
-  /* Adjust other PNGs as needed here */
-}
-
+    /* --- Modal GIF Overlay --- */
+    #gif-modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+    #gif-modal img {
+      max-width: 60vw;
+      max-height: 60vh;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px #0006;
+      display: block;
+      margin: auto;
+    }
   </style>
 </head>
 <body>
@@ -416,15 +419,21 @@
       <!-- Foreground UI Windows in overlay grid -->
       <div class="ui-layer">
         <img src="AuthorUI.png" class="ui-author" alt="Author UI" />
-        <a href="https://www.etsy(dot)com/shop/Elevatai" target="_blank" class="ui-etsy">
+        <a href="https://www.etsy.com/shop/Elevatai" target="_blank" class="ui-etsy show-gif-modal">
           <img src="EtsyLink.png" alt="Etsy UI" />
         </a>
         <img src="CurrentWorksUI.png" class="ui-current-works" alt="Current Works UI" />
-        <a href="https://rebeccamarston.kit.com/193ca21bb0" target="_blank" class="ui-subscribe">
+        <a href="https://rebeccamarston.kit.com/193ca21bb0" target="_blank" class="ui-subscribe show-gif-modal">
           <img src="SubscribeUI.png" alt="Subscribe UI" />
         </a>
       </div>
     </section>
+
+    <!-- Loading GIF Modal -->
+    <div id="gif-modal">
+      <img src="loading-bar.gif" alt="Loading Animation">
+    </div>
+
   <!-- PARTICLE LIBRARY -->
   <script src="particles.min.js"></script>
   <script>
@@ -497,6 +506,29 @@
         icon.src = 'potato 3.PNG';
         potatoAwake = false;
         affirmationUI.classList.remove('visible');
+      }
+    });
+
+    // ---------- GIF MODAL LOGIC FOR ETSY & SUBSCRIBE ----------
+    const gifModal = document.getElementById('gif-modal');
+    const gifLinks = document.querySelectorAll('.show-gif-modal');
+
+    gifLinks.forEach(link => {
+      link.addEventListener('click', function(event) {
+        event.preventDefault();
+        gifModal.style.display = 'flex';
+        // Show the GIF for 1.2 seconds, then open the link & hide the modal
+        setTimeout(() => {
+          window.open(link.href, '_blank'); // open in new tab
+          gifModal.style.display = 'none';
+        }, 1200);
+      });
+    });
+
+    // Optional: hide if user clicks the overlay before timeout (for user control)
+    gifModal.addEventListener('click', function(event) {
+      if (event.target === gifModal) {
+        gifModal.style.display = 'none';
       }
     });
   </script>
