@@ -392,27 +392,112 @@
 
     /* LAPTOPSSSSSSSSS */ 
     @media (max-width: 1400px) {
-      .main-content {
-        gap: 0.8vw;
-        padding-bottom: 30px;
-        padding-top: 3vw;
+      html, body {
+        overflow-x: hidden;
+        overflow-y: auto;
+        overscroll-behavior: contain;
+        height: 100%;
       }
+      .hero,
+      .video-background,
+      #particles-js {
+        width: 100vw;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: auto;
+        height: 100%;
+        max-height: none;
+      }
+      .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
+
+      /* --- Responsive Scroll BG --- */
+      .scroll-bg {
+        width: 97vw;
+        font-size: 4vw;
+        min-width: 120px;
+        max-width: 100vw;
+        aspect-ratio: 1 / 1; /* If your scroll.png has a different ratio, update here too */
+        height: auto;
+      }
+      .scroll-bg span {
+        font-size: 1em;
+      }
+
+      #icon-button img {
+        width: 22vw;
+        height: 22vw;
+        max-width: 200px;
+        max-height: 200px;
+      }
+      #affirmation-ui {
+        width: 90vw;
+        max-width: 90vw;
+        top: calc(2vw + 200px);
+        right: 10%;
+        transform: translate(35%, -134%);
+      }
+      #affirmation-img {
+        height: 50px;
+        width: 180px;
+      }
+      #affirmation-text {
+        font-size: .69em;
+        width: 45%;
+        transform: translate(-48%, -120%);
+      }
+      
+      .main-content {
+        width: 100%;
+        max-width: 100vw;
+        box-sizing: border-box;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        gap: 1vw;
+        isolation: isolate;
+        min-height: unset;
+        max-height: unset;
+        padding-top: 6vw;
+        padding-bottom: 50px;
+        overflow: visible !important;
+      }
+      .main-content img {
+        width: 90%;
+        max-width: 100%;
+        height: auto;
+        object-fit: contain;
+        justify-self: center;
+        align-self: center;
+        transition: all 0.2s;
+      }
+      .ui-layer {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(4, 1fr);
+        width: 100%;
+        height: 100%;
+        overflow: visible !important;
+      }
+      .ui-layer img,
+      .ui-layer a {
+        width: 100% !important;
+        max-width: 180px !important;
+        max-height: 180px !important;
+        height: auto !important;
+      }
+      .coffee-mug         { transform: scale(1.5); }
       .mousemc      {  grid-column: 3; grid-row: 4; transform: scale(1.6) rotateY(-10deg) translate(20%, 0%); }
-      .planner { transform: scale(1.3) rotate(19deg) translate(8%, -90%); }
-      .ui-author { transform: scale(1.7) translate(0%, -20%); }
-      .ui-etsy { transform: scale(1.1) translate(35px, 0px); }
-      .ui-current-works { transform: scale(1.5) translate(-15px, 0px); }
-      .ui-subscribe { transform: scale(1.2) translate(-15px, 0px); }
+      .fiddle-leaf-fig-plant { transform: scale(1.5); }
+      .jade-plant         { transform: scale(1.5); translate(50%, 0%); }
+      .planner            { transform: scale(1.5); translate(80%, -30%) rotate(15deg);}
       .red-book           { transform: scale(1.5); }
       .wisteriabonsai     { transform: scale(1.5); }
+      .ui-author          { grid-column: 1; grid-row: 1; transform: scale(1.5);}
+      .ui-etsy            { grid-column: 2; grid-row: 2; transform: scale(1.5);}
+      .ui-current-works   { grid-column: 1; grid-row: 3; transform: scale(1.5);}
+      .ui-subscribe       { grid-column: 2; grid-row: 4; transform: scale(1.5) translate(0%, -95%);}
       .cameratilted      {  grid-column: 1; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(-5%, 0%); }
       .tamagotchi      {  grid-column: 2; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(0%, 0%); }
       .tape      {  grid-column: 3; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(0%, 0%); }
-      .coffee-mug         { transform: scale(1.5); }
-      .fiddle-leaf-fig-plant { transform: scale(1.5); }
-      .jade-plant         { transform: scale(1.5); translate(50%, 0%); }
       .paper      {  grid-column: 2; grid-row: 4; transform: scale(1.94) rotate(0deg) translate(30%, -60%); }
-      /* Adjust other PNGs as needed here */
     }
 
     /* --- Modal GIF Overlay --- */
