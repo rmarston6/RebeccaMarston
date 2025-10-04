@@ -379,7 +379,7 @@
     }
 
     /* 1920x1080 screens and similar SMALLER DESKTOPSSSSSSSSSSSS */
-    @media (max-width: 2000px) and (min-width: 1400px) and (max-height: 1150px) {
+    @media (max-width: 1400px) {
       html, body {
         overflow-x: hidden;
         overflow-y: auto;
@@ -396,18 +396,18 @@
         height: 100%;
         max-height: none;
       }
+
       #particles-js {
-      position: absolute;
-      width: 100vw;
-      height: 100vh;
-      z-index: 6;
-      top: 0;
-      left: 0;
-      pointer-events: none;
-      transform: scaleX(-1);
-      overflow-y: hidden;
-    }
-      .hero h1 { font-size: 12vw; margin-top: 10vw; width: 100vw; }
+        width: 100vw;
+        min-height: 100vh;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        height: 100%;
+        max-height: none;
+        transform: scaleX(-1);
+      }
+      
+      .hero h1 { font-size: 12.2vw; margin-top: 47vw; margin-bottom: 2vw; width: 70vw; }
 
       /* --- Responsive Scroll BG --- */
       .scroll-bg {
@@ -419,30 +419,34 @@
         height: auto;
       }
       .scroll-bg span {
-        font-size: 1em;
+        font-size: .4em;
+        max-width: 45vw;
+        transform: translate(-1.4%, -1%);
       }
 
       #icon-button img {
-        width: 22vw;
-        height: 22vw;
+        width: 11.5vw;
+        height: 11.5vw;
         max-width: 200px;
         max-height: 200px;
+        transform: translate(-3%, 0%);
       }
       #affirmation-ui {
         width: 90vw;
         max-width: 90vw;
         top: calc(2vw + 200px);
         right: 10%;
-        transform: translate(35%, -134%);
+        transform: translate(50%, -50%);
       }
       #affirmation-img {
         height: 50px;
-        width: 180px;
+        width: 230px;
       }
       #affirmation-text {
-        font-size: .69em;
-        width: 45%;
-        transform: translate(-48%, -120%);
+        font-size: .72em;
+        width: 15%;
+        transform: translate(-53%, -23%);
+        word-break: break-word;
       }
       
       .main-content {
@@ -482,22 +486,43 @@
         max-height: 180px !important;
         height: auto !important;
       }
-      .coffee-mug         { transform: scale(1.5); }
-      .fiddle-leaf-fig-plant { transform: scale(1.5); }
-      .jade-plant         { transform: scale(1.5); translate(50%, 0%); }
-      .mousemc      {  grid-column: 3; grid-row: 4; transform: scale(1.6) rotateY(-10deg) translate(20%, 0%); }
-      .planner { transform: scale(2.1) rotate(19deg) translate(34%, -120%); }
-      .ui-author { transform: scale(2.8) translate(0%, -20%); }
-      .ui-etsy { transform: scale(1.4) translate(50px, 0px); }
-      .ui-current-works { transform: scale(2.2) translate(-50px, 0px); }
-      .ui-subscribe { transform: scale(1.5) translate(-50px, 0px); }
-      .red-book           { transform: scale(1.5); }
-      .wisteriabonsai     { transform: scale(1.5); }
-      .cameratilted      {  grid-column: 1; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(-5%, 0%); }
-      .tamagotchi      {  grid-column: 2; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(0%, 0%); }
-      .tape      {  grid-column: 3; grid-row: 4; transform: scale(1.6) rotate(0deg) translate(0%, 0%); }
-      .paper      {  grid-column: 2; grid-row: 4; transform: scale(1.94) rotate(0deg) translate(30%, -60%); }
-      /* Adjust other PNGs as needed here */
+      .coffee-mug         { grid-column: 1; grid-row: 4; transform: scale(7.3) translate(40%, -230%); }
+      .mousemc      {  grid-column: 3; grid-row: 4; transform: scale(.96) translate(135%, -79%) rotate(15deg); }
+      .fiddle-leaf-fig-plant { grid-column: 4; grid-row: 1; transform: scale(1.5) translate(26%, -60%) rotate(200deg); }
+      .jade-plant         { grid-column: 1; grid-row: 2; transform: scale(7.5) translate(32%, -80%); }
+      .planner            { grid-column: 2; grid-row: 2; transform: scale(16) translate(68%, -27%) rotate(15deg);}
+      .red-book           { grid-column: 3; grid-row: 3; transform: scale(1.5) translate(106%, -63%) rotate(-10deg) scaleX(-1); }
+      .wisteriabonsai     { grid-column: 1; grid-row: 1; transform: scale(13) translate(20%, -50%); }
+      .ui-author          { grid-column: 1; grid-row: 1; transform: scale(3.5) translate(10%, -45%);}
+      .ui-etsy            { grid-column: 2; grid-row: 2; transform: scale(2) translate(71%, -120%);}
+      .ui-current-works   { grid-column: 1; grid-row: 3; transform: scale(3) translate(14%, -155%);}
+      .ui-subscribe       { grid-column: 2; grid-row: 4; transform: scale(3.79) translate(-23%, -182%);}
+      .cameratilted      {  grid-column: 1; grid-row: 4; transform: scale(16.2) translate(18%, -42%) rotate(0deg); }
+      .tamagotchi      {  grid-column: 2; grid-row: 4; transform: scale(5) translate(219%, -89%) rotate(59deg); }
+      .tape      {  grid-column: 3; grid-row: 4; transform: scale(1) translate(20%, -114%) rotate(30deg); }
+      .paper      {  grid-column: 2; grid-row: 4; transform: scale(17)  translate(60%, -100%) rotate(310deg); }
+    }
+
+    /* --- Modal GIF Overlay --- */
+    #gif-modal {
+      display: none;
+      position: fixed;
+      z-index: 3000;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      background: rgba(0,0,0,0.6);
+      align-items: center;
+      justify-content: center;
+    }
+    #gif-modal img {
+      max-width: 60vw;
+      max-height: 60vh;
+      border-radius: 12px;
+      box-shadow: 0 4px 24px #0006;
+      display: block;
+      margin: auto;
     }
 
     /* LAPTOPSSSSSSSSS */ 
