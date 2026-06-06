@@ -325,6 +325,19 @@
     justify-self: center;
     align-self: center;
   }
+.main-content {
+  grid-template-rows: repeat(6, minmax(120px, auto));
+}
+
+.hero h1 {
+  transform: translate(0, -60%);
+  z-index: 7;
+}
+
+.scroll-bg {
+  transform: translate(0, 5%);
+  z-index: 6;
+}
 
   /* Reset every item — clean slate */
   .coffee-mug        { grid-column: 1; grid-row: 3; transform: scale(1) translate(0, 0); }
